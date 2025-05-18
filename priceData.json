@@ -216,16 +216,16 @@
           }
         }
       },
-      "CCTV": {
+      "지능형CCTV": {
         "에스원안심": {
           "기본료": 12000,
-          "장비임대료": 13000,
-          "설치비": 0
+          "장비임대료": 0,
+          "설치비": 13000
         },
         "출입관리기": {
           "기본료": 30000,
-          "장비임대료": 250000,
-          "설치비": 0
+          "장비임대료": 0,
+          "설치비": 250000
         }
       }
     }
@@ -466,7 +466,7 @@
     {
       "category": "소호",
       "productKeys": [
-        "1G",
+        "500M",
         "지능형CCTV",
         "인터넷전화"
       ],
@@ -478,7 +478,7 @@
     {
       "category": "소호",
       "productKeys": [
-        "1G",
+        "500M",
         "지능형CCTV",
         "IPTV"
       ],
@@ -486,6 +486,52 @@
       "displayName": "TPS",
       "type": "fixed",
       "value": 6000
+    },
+    {
+      "category": "소호",
+      "productKeys": [
+        "1G",
+        "IPTV"
+      ],
+      "featureRange": null,
+      "displayName": "인터넷+IPTV",
+      "type": "fixed",
+      "value": 5000
+    },
+    {
+      "category": "소호",
+      "productKeys": [
+        "1G",
+        "CCTV"
+      ],
+      "featureRange": null,
+      "displayName": "인터넷+CCTV",
+      "type": "fixed",
+      "value": 5000
+    },
+    {
+      "category": "소호",
+      "productKeys": [
+        "1G",
+        "지능형CCTV",
+        "인터넷전화"
+      ],
+      "featureRange": null,
+      "displayName": "TPS",
+      "type": "fixed",
+      "value": 8000
+    },
+    {
+      "category": "소호",
+      "productKeys": [
+        "1G",
+        "지능형CCTV",
+        "IPTV"
+      ],
+      "featureRange": null,
+      "displayName": "TPS",
+      "type": "fixed",
+      "value": 8000
     },
     {
       "category": "소호",

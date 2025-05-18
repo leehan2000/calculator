@@ -20,8 +20,11 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // 요금표 데이터를 외부 JSON 파일에서 가져옵니다
     let priceData = {};
+    window.priceData = priceData;
     let specialFeaturePrices = {};
+    window.specialFeaturePrices = specialFeaturePrices;
     let devicePrices = {};
+    window.devicePrices = devicePrices;
     let bundleDiscounts = {};
     
     // 단말기 관련 세부 데이터
@@ -97,8 +100,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 try {
                     const data = JSON.parse(e.target.result);
                     priceData = data.priceData || {};
+                    window.priceData = priceData;
                     specialFeaturePrices = data.specialFeaturePrices || {};
+                    window.specialFeaturePrices = specialFeaturePrices;
                     devicePrices = data.devicePrices || {};
+                    window.devicePrices = devicePrices;
                     bundleDiscounts = data.bundleDiscounts || {};
                     
                     // 단말기 세부 데이터 로드
@@ -224,6 +230,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (priceDataSheet) {
                     console.log('기본요금 시트 발견!');
                     priceData = {};
+                    window.priceData = priceData;
                     
                     // 데이터 행 순회 (헤더 제외)
                     priceDataSheet.eachRow({ includeEmpty: false }, function(row, rowNumber) {
@@ -883,6 +890,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // 장바구니 관리
     const cartItems = [];
+    window.cartItems = cartItems;
 
     function addToCart() {
         const activeCategory = document.querySelector('.tab-button.active').getAttribute('data-category');
@@ -1138,19 +1146,30 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.log('계산 중인 상품:', item);
                 
                 // 요금 데이터 찾기
-                let priceInfo;
-                
+                let priceInfo = null;
                 try {
-                    if (item.subProduct) {
-                        if (item.option && priceData[item.category]?.[item.product]?.[item.subProduct]?.[item.option]) {
-                            priceInfo = priceData[item.category][item.product][item.subProduct][item.option];
-                        } else if (priceData[item.category]?.[item.product]?.[item.subProduct]) {
-                            priceInfo = priceData[item.category][item.product][item.subProduct];
-                        }
-                    } else if (item.option && priceData[item.category]?.[item.product]?.[item.option]) {
+                    // 1. subProduct + option
+                    if (item.subProduct && item.option && priceData[item.category]?.[item.product]?.[item.subProduct]?.[item.option]) {
+                        priceInfo = priceData[item.category][item.product][item.subProduct][item.option];
+                    }
+                    // 2. subProduct만
+                    else if (item.subProduct && priceData[item.category]?.[item.product]?.[item.subProduct]) {
+                        priceInfo = priceData[item.category][item.product][item.subProduct];
+                    }
+                    // 3. option만
+                    else if (item.option && priceData[item.category]?.[item.product]?.[item.option]) {
                         priceInfo = priceData[item.category][item.product][item.option];
-                    } else if (priceData[item.category]?.[item.product]) {
+                    }
+                    // 4. subProduct가 없고 option도 없을 때
+                    else if (priceData[item.category]?.[item.product]) {
                         priceInfo = priceData[item.category][item.product];
+                    }
+                    // 5. CCTV 특수 처리: subProduct/option 둘 중 하나라도 '에스원안심' 또는 '출입관리기'면
+                    else if (item.product === "지능형CCTV") {
+                        const key = item.subProduct || item.option;
+                        if (key && priceData[item.category]?.[item.product]?.[key]) {
+                            priceInfo = priceData[item.category][item.product][key];
+                        }
                     }
                 } catch (error) {
                     console.error('요금 정보 조회 중 오류:', error);
@@ -1783,8 +1802,11 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(response => response.json())
         .then(data => {
             priceData = data.priceData;
+            window.priceData = priceData;
             specialFeaturePrices = data.specialFeaturePrices;
+            window.specialFeaturePrices = specialFeaturePrices;
             devicePrices = data.devicePrices;
+            window.devicePrices = devicePrices;
             
             // 결합 할인 데이터가 있으면 로드
             if (data.bundleDiscounts) {
@@ -1884,6 +1906,10 @@ document.addEventListener('DOMContentLoaded', function() {
                         "정액제": { "기본료": 12500, "장비임대료": 3500, "설치비": 25000 }
                     },
                     "일반형": { "기본료": 4500, "장비임대료": 2000, "설치비": 15000 }
+                },
+                "지능형CCTV": {
+                    "에스원안심": { "기본료": 12000, "장비임대료": 0, "설치비": 13000 },
+                    "출입관리기": { "기본료": 30000, "장비임대료": 0, "설치비": 250000 }
                 }
             }
         };
