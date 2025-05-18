@@ -1305,7 +1305,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <p><i class="fas fa-comments"></i> 자유통화 추가 요금: ${totalSpecialFeatureFee.toLocaleString()}원</p>
                 <p><i class="fas fa-tools"></i> 설치비 합계: ${totalInstallationFee.toLocaleString()}원</p>
                 ${totalBundleDiscount > 0 ? `<p><i class="fas fa-percentage"></i> 결합 할인: -${totalBundleDiscount.toLocaleString()}원</p>` : ''}
-                <p class="total-price"><i class="fas fa-check-circle"></i> <strong>월 사용료: ${finalTotal.toLocaleString()}원</strong></p>
+                <p class="total-price"><i class="fas fa-check-circle"></i> <strong>월 사용료 (VAT별도): ${finalTotal.toLocaleString()}원</strong></p>
             `;
             
             // 결과에 애니메이션 효과 추가
@@ -1331,7 +1331,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <h3><i class="fas fa-exclamation-triangle"></i> 요금 계산 중 오류 발생</h3>
                 <p>오류 내용: ${error.message}</p>
                 <p>자세한 내용은 개발자 콘솔을 확인해주세요.</p>
-                <p class="total-price"><i class="fas fa-check-circle"></i> <strong>월 사용료(설치비 제외): 계산 불가</strong></p>
+                <p class="total-price"><i class="fas fa-check-circle"></i> <strong>월 사용료(설치비 제외) (VAT별도): 계산 불가</strong></p>
             `;
         }
     }
