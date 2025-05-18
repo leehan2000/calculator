@@ -300,17 +300,23 @@ document.addEventListener('DOMContentLoaded', function() {
                     
                     console.log('단말기 시트 헤더:', headerValues.filter(Boolean));
                     
+                    // 컬럼 인덱스 정의 (엑셀 양식에 맞춤)
+                    const DEVICE_NAME_COL = 1;    // 단말기명
+                    const STANDALONE_PRICE_COL = 2;  // 단독 가격
+                    const BUNDLED_PRICE_COL = 3;  // 번들 가격
+                    // 4번 컬럼부터 자유통화 할인율 정보
+                    
                     deviceSheet.eachRow({ includeEmpty: false }, function(row, rowNumber) {
                         if (rowNumber > 1) { // 헤더 제외
-                            const deviceName = row.getCell(1).value;
+                            const deviceName = row.getCell(DEVICE_NAME_COL).value;
                             if (!deviceName) return; // 기기 이름이 없으면 넘어감
                             
-                            // 1) 단독 요금 설정
-                            const standalonePrice = Number(row.getCell(2).value) || 0;
+                            // 1) 단독 요금 설정 (인터넷전화만 설치할 때 단말기 가격)
+                            const standalonePrice = Number(row.getCell(STANDALONE_PRICE_COL).value) || 0;
                             deviceStandalonePrices[deviceName] = standalonePrice;
                             
-                            // 2) 번들 요금 설정
-                            const bundledPrice = Number(row.getCell(3).value) || 0;
+                            // 2) 번들 요금 설정 (인터넷과 함께 설치할 때 단말기 가격)
+                            const bundledPrice = Number(row.getCell(BUNDLED_PRICE_COL).value) || 0;
                             deviceBundledPrices[deviceName] = bundledPrice;
                             
                             // 3) 자유통화 할인 설정
@@ -631,38 +637,133 @@ document.addEventListener('DOMContentLoaded', function() {
             { header: '자유통화50', key: 'feature50', width: 15 }
         ];
         
-        // 샘플 데이터 추가
+        // 샘플 데이터 추가 - 요청한 데이터로 변경
         deviceSheet.addRow({ 
             deviceName: 'IP-450S', 
-            standalone: 80000, 
-            bundled: 70000,
+            standalone: 1389, 
+            bundled: 556,
             feature3: '100%할인',
             feature4: '100%할인',
-            feature6: '50%할인'
+            feature6: '100%할인',
+            feature8: '100%할인',
+            feature10: '100%할인',
+            feature15: '100%할인',
+            feature20: '100%할인',
+            feature30: '100%할인',
+            feature50: '100%할인'
         });
         deviceSheet.addRow({ 
             deviceName: 'IP-450P', 
-            standalone: 90000, 
-            bundled: 80000,
+            standalone: 1667, 
+            bundled: 1389,
             feature3: '100%할인',
-            feature4: '80%할인',
+            feature4: '100%할인',
+            feature6: '100%할인',
+            feature8: '100%할인',
+            feature10: '100%할인',
+            feature15: '100%할인',
+            feature20: '100%할인',
+            feature30: '100%할인',
+            feature50: '100%할인'
+        });
+        deviceSheet.addRow({ 
+            deviceName: 'IP-300S', 
+            standalone: 1111, 
+            bundled: 0,
+            feature3: '100%할인',
+            feature4: '100%할인',
+            feature6: '100%할인',
+            feature8: '100%할인',
+            feature10: '100%할인',
+            feature15: '100%할인',
+            feature20: '100%할인',
+            feature30: '100%할인',
+            feature50: '100%할인'
+        });
+        deviceSheet.addRow({ 
+            deviceName: 'IP-520S', 
+            standalone: 1945, 
+            bundled: 1111,
+            feature3: '100%할인',
+            feature4: '100%할인',
+            feature6: '100%할인',
+            feature8: '100%할인',
+            feature10: '100%할인',
+            feature15: '100%할인',
+            feature20: '100%할인',
+            feature30: '100%할인',
+            feature50: '100%할인'
+        });
+        deviceSheet.addRow({ 
+            deviceName: 'IP-520G', 
+            standalone: 2111, 
+            bundled: 1278,
+            feature3: '50%할인',
+            feature4: '50%할인',
+            feature6: '100%할인',
+            feature8: '100%할인',
+            feature10: '100%할인',
+            feature15: '100%할인',
+            feature20: '100%할인',
+            feature30: '100%할인',
+            feature50: '100%할인'
+        });
+        deviceSheet.addRow({ 
+            deviceName: 'MWP2500E', 
+            standalone: 2361, 
+            bundled: 1667,
+            feature3: '50%할인',
+            feature4: '50%할인',
             feature6: '50%할인',
-            feature8: '30%할인'
+            feature8: '50%할인',
+            feature10: '50%할인',
+            feature15: '50%할인',
+            feature20: '50%할인',
+            feature30: '50%할인',
+            feature50: '50%할인'
+        });
+        deviceSheet.addRow({ 
+            deviceName: 'GAPM-7500E', 
+            standalone: 1389, 
+            bundled: 1389,
+            feature3: '100%할인',
+            feature4: '100%할인',
+            feature6: '100%할인',
+            feature8: '100%할인',
+            feature10: '100%할인',
+            feature15: '100%할인',
+            feature20: '100%할인',
+            feature30: '100%할인',
+            feature50: '100%할인'
+        });
+        deviceSheet.addRow({ 
+            deviceName: 'IP-700S(본체)+EK-700S(확장)', 
+            standalone: 5000, 
+            bundled: 4444,
+            feature3: '50%할인',
+            feature4: '50%할인',
+            feature6: '50%할인',
+            feature8: '50%할인',
+            feature10: '50%할인',
+            feature15: '50%할인',
+            feature20: '50%할인',
+            feature30: '50%할인',
+            feature50: '50%할인'
+        });
+        deviceSheet.addRow({ 
+            deviceName: 'CPG 1Port', 
+            standalone: 1000, 
+            bundled: 1000
         });
         deviceSheet.addRow({ 
             deviceName: 'UHD', 
-            standalone: 70000, 
-            bundled: 60000
+            standalone: 4000, 
+            bundled: 4000
         });
         deviceSheet.addRow({ 
-            deviceName: 'IP-700S(본체) + EK-700S(확장)', 
-            standalone: 120000, 
-            bundled: 100000,
-            feature3: '100%할인',
-            feature4: '100%할인',
-            feature6: '80%할인',
-            feature8: '50%할인',
-            feature10: '30%할인'
+            deviceName: '가온', 
+            standalone: 3000, 
+            bundled: 3000
         });
         
         // 헤더 스타일 적용
@@ -1073,11 +1174,26 @@ document.addEventListener('DOMContentLoaded', function() {
                     // 단말기 추가 요금
                     if (item.device) {
                         let devicePrice = 0;
-                        let appliedDiscount = false;
+                        
+                        // 인터넷과 함께 설치하는지 확인 (같은 카테고리에 인터넷 상품이 있는지)
+                        const hasInternet = cartItems.some(cartItem => 
+                            cartItem.category === item.category && 
+                            cartItem.product === '인터넷'
+                        );
+                        
+                        console.log(`${item.device} - 인터넷 함께 설치 여부:`, hasInternet);
                         
                         // 단말기 가격 정보 확인
                         if (deviceStandalonePrices && deviceStandalonePrices[item.device]) {
-                            devicePrice = deviceStandalonePrices[item.device];
+                            // 인터넷과 함께 설치하는 경우 번들 가격 적용
+                            if (hasInternet && deviceBundledPrices && deviceBundledPrices[item.device]) {
+                                devicePrice = deviceBundledPrices[item.device];
+                                console.log(`단말기 번들 가격 적용: ${item.device}, ${devicePrice}원`);
+                            } else {
+                                // 인터넷 없이 단독으로 설치하는 경우 단독 가격 적용
+                                devicePrice = deviceStandalonePrices[item.device];
+                                console.log(`단말기 단독 가격 적용: ${item.device}, ${devicePrice}원`);
+                            }
                             
                             // 자유통화 할인 확인
                             if (item.feature && item.feature !== '없음' && 
@@ -1091,14 +1207,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                     const discountAmount = devicePrice * discount.value / 100;
                                     devicePrice -= discountAmount;
                                     console.log(`단말기 자유통화 할인 적용: ${item.device}, ${item.feature}, ${discount.value}% (${discountAmount}원 할인)`);
-                                    appliedDiscount = true;
                                 }
-                            }
-                            
-                            // 번들 가격 적용 (자유통화 할인이 적용되지 않은 경우)
-                            if (!appliedDiscount && deviceBundledPrices && deviceBundledPrices[item.device] && item.product === '인터넷전화') {
-                                devicePrice = deviceBundledPrices[item.device];
-                                console.log(`단말기 번들 가격 적용: ${item.device}, ${devicePrice}원`);
                             }
                             
                             totalDeviceFee += devicePrice * quantity;
@@ -1146,7 +1255,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
             
             console.log('계산된 기본 요금:', totalBasicFee);
-            console.log('계산된 장비 임대료:', totalDeviceFee);
+            console.log('계산된 장비임대료:', totalDeviceFee);
             console.log('계산된 설치비:', totalInstallationFee);
             console.log('계산된 자유통화 요금:', totalSpecialFeatureFee);
             console.log('상품 카운트:', productCounts);
@@ -1291,8 +1400,10 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // 최종 합계 계산 (할인 적용)
             const finalTotal = totalBasicFee + totalDeviceFee + totalSpecialFeatureFee - totalBundleDiscount;
+            const finalTotalRounded = Math.floor(finalTotal / 10) * 10; // 원 단위 절사
             const totalWithInstallation = finalTotal + totalInstallationFee; // 내부 계산용으로만 사용
             console.log('월 사용료(설치비 제외):', finalTotal);
+            console.log('월 사용료(원 단위 절사):', finalTotalRounded);
             console.log('총 금액(설치비 포함):', totalWithInstallation);
             
             // 결과 표시
@@ -1301,11 +1412,11 @@ document.addEventListener('DOMContentLoaded', function() {
             resultContainer.innerHTML = `
                 <h3><i class="fas fa-chart-line"></i> 요금 계산 결과</h3>
                 <p><i class="fas fa-won-sign"></i> 기본료 합계: ${totalBasicFee.toLocaleString()}원</p>
-                <p><i class="fas fa-hdd"></i> 장비임대료 합계: ${totalDeviceFee.toLocaleString()}원</p>
-                <p><i class="fas fa-comments"></i> 자유통화 추가 요금: ${totalSpecialFeatureFee.toLocaleString()}원</p>
+                <p><i class="fas fa-hdd"></i> 장비임대료 합계: ${(Math.floor(totalDeviceFee / 10) * 10).toLocaleString()}원</p>
+                <p><i class="fas fa-comments"></i> 자유통화 요금: ${totalSpecialFeatureFee.toLocaleString()}원</p>
                 <p><i class="fas fa-tools"></i> 설치비 합계: ${totalInstallationFee.toLocaleString()}원</p>
                 ${totalBundleDiscount > 0 ? `<p><i class="fas fa-percentage"></i> 결합 할인: -${totalBundleDiscount.toLocaleString()}원</p>` : ''}
-                <p class="total-price"><i class="fas fa-check-circle"></i> <strong>월 사용료 (VAT별도): ${finalTotal.toLocaleString()}원</strong></p>
+                <p class="total-price"><i class="fas fa-check-circle"></i> <strong>월 사용료 (VAT별도): ${finalTotalRounded.toLocaleString()}원</strong></p>
             `;
             
             // 결과에 애니메이션 효과 추가
