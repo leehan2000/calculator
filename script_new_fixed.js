@@ -1406,15 +1406,118 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log('월 사용료(원 단위 절사):', finalTotalRounded);
             console.log('총 금액(설치비 포함):', totalWithInstallation);
             
+            // 항목별 설명 준비
+            let basicFeeDescription = '기본료 합계';
+            let deviceFeeDescription = '장비임대료 합계';
+            let featureFeeDescription = '자유통화 요금';
+            let installationFeeDescription = '설치비 합계';
+            
+            // 기본료 상세 내역 추가
+            const basicFeeDescriptions = [];
+            cartItems.forEach(item => {
+                if (priceData[item.category]?.[item.product]) {
+                    let priceInfo;
+                    
+                    // 요금 정보 찾기
+                    try {
+                        if (item.subProduct) {
+                            if (item.option && priceData[item.category]?.[item.product]?.[item.subProduct]?.[item.option]) {
+                                priceInfo = priceData[item.category][item.product][item.subProduct][item.option];
+                            } else if (priceData[item.category]?.[item.product]?.[item.subProduct]) {
+                                priceInfo = priceData[item.category][item.product][item.subProduct];
+                            }
+                        } else if (item.option && priceData[item.category]?.[item.product]?.[item.option]) {
+                            priceInfo = priceData[item.category][item.product][item.option];
+                        } else if (priceData[item.category]?.[item.product]) {
+                            priceInfo = priceData[item.category][item.product];
+                        }
+                    } catch (error) {
+                        console.error('요금 정보 조회 중 오류:', error);
+                        priceInfo = null;
+                    }
+                    
+                    if (priceInfo && priceInfo.기본료) {
+                        const quantity = item.lines || item.quantity || 1;
+                        const basicFee = priceInfo.기본료 * quantity;
+                        
+                        let productName = item.product;
+                        if (item.subProduct) {
+                            productName += ` ${item.subProduct}`;
+                        }
+                        if (item.option) {
+                            productName += ` ${item.option}`;
+                        }
+                        
+                        basicFeeDescriptions.push(`${productName} 기본료 ${basicFee.toLocaleString()}원`);
+                    }
+                }
+            });
+            
+            // 단말기 종류별 설명 추가
+            const deviceDescriptions = [];
+            cartItems.forEach(item => {
+                if (item.device) {
+                    let description = '';
+                    if (item.device.includes('UHD')) {
+                        description = `UHD 임대비 ${deviceBundledPrices[item.device]?.toLocaleString() || deviceStandalonePrices[item.device]?.toLocaleString() || '0'}원`;
+                    } else if (item.device.includes('가온')) {
+                        description = `가온 임대비 ${deviceBundledPrices[item.device]?.toLocaleString() || deviceStandalonePrices[item.device]?.toLocaleString() || '0'}원`;
+                    } else if (item.product === '인터넷전화') {
+                        // 인터넷전화 단말기는 전화기 할부금으로 표시
+                        let price = 0;
+                        // 인터넷과 함께 설치하는지 확인
+                        const hasInternet = cartItems.some(cartItem => 
+                            cartItem.category === item.category && 
+                            cartItem.product === '인터넷'
+                        );
+                        
+                        if (hasInternet && deviceBundledPrices[item.device]) {
+                            price = deviceBundledPrices[item.device];
+                        } else {
+                            price = deviceStandalonePrices[item.device] || 0;
+                        }
+                        
+                        // 자유통화 할인 적용
+                        if (item.feature && item.feature !== '없음' && 
+                            deviceFeatureDiscounts && 
+                            deviceFeatureDiscounts[item.device] && 
+                            deviceFeatureDiscounts[item.device][item.feature]) {
+                            
+                            const discount = deviceFeatureDiscounts[item.device][item.feature];
+                            if (discount.type === 'percent') {
+                                price = price * (1 - discount.value / 100);
+                            }
+                        }
+                        
+                        description = `전화기 할부금 ${Math.floor(price).toLocaleString()}원`;
+                    }
+                    
+                    if (description) {
+                        deviceDescriptions.push(description);
+                    }
+                }
+            });
+            
             // 결과 표시
             const resultContainer = document.getElementById('result-container');
             resultContainer.style.display = 'block';
+            
+            // 기본료 설명 텍스트 생성
+            const basicFeeDescriptionText = basicFeeDescriptions.length > 0 
+                ? `(${basicFeeDescriptions.join(' + ')})` 
+                : '';
+            
+            // 단말기 설명 텍스트 생성
+            const deviceDescriptionText = deviceDescriptions.length > 0 
+                ? `(${deviceDescriptions.join(' + ')})` 
+                : '';
+            
             resultContainer.innerHTML = `
                 <h3><i class="fas fa-chart-line"></i> 요금 계산 결과</h3>
-                <p><i class="fas fa-won-sign"></i> 기본료 합계: ${totalBasicFee.toLocaleString()}원</p>
-                <p><i class="fas fa-hdd"></i> 장비임대료 합계: ${(Math.floor(totalDeviceFee / 10) * 10).toLocaleString()}원</p>
-                <p><i class="fas fa-comments"></i> 자유통화 요금: ${totalSpecialFeatureFee.toLocaleString()}원</p>
-                <p><i class="fas fa-tools"></i> 설치비 합계: ${totalInstallationFee.toLocaleString()}원</p>
+                <p><i class="fas fa-won-sign"></i> ${basicFeeDescription} ${basicFeeDescriptionText}: ${totalBasicFee.toLocaleString()}원</p>
+                <p><i class="fas fa-hdd"></i> ${deviceFeeDescription} ${deviceDescriptionText}: ${(Math.floor(totalDeviceFee / 10) * 10).toLocaleString()}원</p>
+                <p><i class="fas fa-comments"></i> ${featureFeeDescription}: ${totalSpecialFeatureFee.toLocaleString()}원</p>
+                <p><i class="fas fa-tools"></i> ${installationFeeDescription}: ${totalInstallationFee.toLocaleString()}원</p>
                 ${totalBundleDiscount > 0 ? `<p><i class="fas fa-percentage"></i> 결합 할인: -${totalBundleDiscount.toLocaleString()}원</p>` : ''}
                 <p class="total-price"><i class="fas fa-check-circle"></i> <strong>월 사용료 (VAT별도): ${finalTotalRounded.toLocaleString()}원</strong></p>
             `;
