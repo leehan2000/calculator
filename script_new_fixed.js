@@ -1017,28 +1017,30 @@ document.addEventListener('DOMContentLoaded', function() {
             const cartItem = document.createElement('div');
             cartItem.className = 'cart-item';
             
-            let itemDescription = `<strong>${item.category} ${item.product}</strong>`;
+            // 상품명(카테고리+상품)
+            let itemTitle = `<strong>${item.category} ${item.product}</strong>`;
+            // 상세 정보(옵션, subProduct, 회선수 등)
+            let details = '';
             if (item.subProduct) {
-                itemDescription += ` - ${item.subProduct}`;
+                details += `<div class="cart-item-detail">${item.subProduct}</div>`;
             }
             if (item.option) {
-                itemDescription += ` (${item.option})`;
+                details += `<div class="cart-item-detail">${item.option}</div>`;
             }
             if (item.lines) {
-                itemDescription += ` x ${item.lines}회선`;
+                details += `<div class="cart-item-detail">${item.lines}회선</div>`;
             }
             if (item.quantity) {
-                itemDescription += ` x ${item.quantity}개`;
+                details += `<div class="cart-item-detail">${item.quantity}개</div>`;
             }
             if (item.device) {
-                itemDescription += `<br><i class="fas fa-mobile-alt"></i> 단말기: ${item.device}`;
+                details += `<div class="cart-item-detail">단말기: ${item.device}</div>`;
             }
             if (item.feature && item.feature !== '없음') {
-                itemDescription += `<br><i class="fas fa-comments"></i> 자유통화: ${item.feature}`;
+                details += `<div class="cart-item-detail">자유통화: ${item.feature}</div>`;
             }
-            // WIFI 정보 표시 추가
             if (item.wifi) {
-                itemDescription += `<br><i class="fas fa-wifi"></i> WIFI: ${item.wifi}`;
+                details += `<div class="cart-item-detail">WIFI: ${item.wifi}</div>`;
             }
             
             const removeButton = document.createElement('span');
@@ -1046,7 +1048,7 @@ document.addEventListener('DOMContentLoaded', function() {
             removeButton.innerHTML = '<i class="fas fa-times"></i>';
             removeButton.addEventListener('click', () => removeFromCart(index));
             
-            cartItem.innerHTML = itemDescription;
+            cartItem.innerHTML = itemTitle + details;
             cartItem.appendChild(removeButton);
             cartContainer.appendChild(cartItem);
             
@@ -1506,36 +1508,31 @@ document.addEventListener('DOMContentLoaded', function() {
                         description = `UHD 임대비 ${deviceBundledPrices[item.device]?.toLocaleString() || deviceStandalonePrices[item.device]?.toLocaleString() || '0'}원`;
                     } else if (item.device.includes('가온')) {
                         description = `가온 임대비 ${deviceBundledPrices[item.device]?.toLocaleString() || deviceStandalonePrices[item.device]?.toLocaleString() || '0'}원`;
-                    } else if (item.product === '인터넷전화') {
-                        // 인터넷전화 단말기는 전화기 할부금으로 표시
+                    } else if (item.product === '인터넷전화' || item.product === 'AI전화') {
+                        // 인터넷전화 또는 AI전화 단말기는 전화기 할부금으로 표시
                         let price = 0;
                         // 인터넷과 함께 설치하는지 확인
                         const hasInternet = cartItems.some(cartItem => 
                             cartItem.category === item.category && 
                             cartItem.product === '인터넷'
                         );
-                        
                         if (hasInternet && deviceBundledPrices[item.device]) {
                             price = deviceBundledPrices[item.device];
                         } else {
                             price = deviceStandalonePrices[item.device] || 0;
                         }
-                        
                         // 자유통화 할인 적용
                         if (item.feature && item.feature !== '없음' && 
                             deviceFeatureDiscounts && 
                             deviceFeatureDiscounts[item.device] && 
                             deviceFeatureDiscounts[item.device][item.feature]) {
-                            
                             const discount = deviceFeatureDiscounts[item.device][item.feature];
                             if (discount.type === 'percent') {
                                 price = price * (1 - discount.value / 100);
                             }
                         }
-                        
                         description = `전화기 할부금 ${Math.floor(price).toLocaleString()}원`;
                     }
-                    
                     if (description) {
                         deviceDescriptions.push(description);
                     }
