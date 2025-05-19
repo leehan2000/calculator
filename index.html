@@ -40,103 +40,109 @@
             <!-- SME 인터넷 -->
             <div id="sme-internet" class="product-component active">
                 <h4><i class="fas fa-wifi"></i> SME 인터넷</h4>
-                <div class="option-group">
-                    <label><i class="fas fa-tachometer-alt"></i> 속도 선택:</label>
-                    <select id="sme-internet-speed">
-                        <option value="100M">100M</option>
-                        <option value="500M">500M</option>
-                        <option value="1G">1G</option>
-                    </select>
-                </div>
-                <div class="option-group">
-                    <label><i class="fas fa-network-wired"></i> 회선 수:</label>
-                    <input type="number" id="sme-internet-lines" min="1" value="1">
+                <div class="option-groups">
+                    <div class="option-group">
+                        <label><i class="fas fa-tachometer-alt"></i> 속도 선택:</label>
+                        <select id="sme-internet-speed">
+                            <option value="100M">100M</option>
+                            <option value="500M">500M</option>
+                            <option value="1G">1G</option>
+                        </select>
+                    </div>
+                    <div class="option-group">
+                        <label><i class="fas fa-network-wired"></i> 회선 수:</label>
+                        <input type="number" id="sme-internet-lines" min="1" value="1">
+                    </div>
                 </div>
             </div>
 
             <!-- SME 인터넷전화 -->
             <div id="sme-voip" class="product-component">
                 <h4><i class="fas fa-phone"></i> SME 인터넷전화</h4>
-                <div class="option-group">
-                    <label><i class="fas fa-box"></i> 상품 선택:</label>
-                    <select id="sme-voip-product">
-                        <option value="DCS">DCS</option>
-                        <option value="고급형DCS">고급형DCS</option>
-                        <option value="고급형센트릭스" selected>고급형센트릭스</option>
-                        <option value="일반형">일반형</option>
-                    </select>
-                </div>
-                <div class="option-group" id="sme-voip-plan-group">
-                    <label><i class="fas fa-money-bill-wave"></i> 요금제:</label>
-                    <select id="sme-voip-plan">
-                        <option value="종량제">종량제</option>
-                        <option value="정액제" selected>정액제</option>
-                    </select>
-                </div>
-                <div class="option-group">
-                    <label><i class="fas fa-network-wired"></i> 회선 수:</label>
-                    <input type="number" id="sme-voip-lines" min="1" value="1">
-                </div>
-                <div class="option-group">
-                    <label><i class="fas fa-mobile-alt"></i> 단말기:</label>
-                    <select id="sme-voip-device">
-                        <option value="IP-450S">IP-450S</option>
-                        <option value="IP-450P">IP-450P</option>
-                        <option value="IP-300S">IP-300S</option>
-                        <option value="IP-520S">IP-520S</option>
-                        <option value="IP-520G">IP-520G</option>
-                        <option value="MWP2500E">MWP2500E</option>
-                        <option value="GAPM-7500E">GAPM-7500E</option>
-                        <option value="IP-700S(본체) + EK-700S(확장)">IP-700S(본체) + EK-700S(확장)</option>
-                        <option value="CPG 1Port">CPG 1Port</option>
-                    </select>
-                </div>
-                <div class="option-group" id="sme-voip-feature-group">
-                    <label><i class="fas fa-comments"></i> 자유통화 선택:</label>
-                    <select id="sme-voip-feature">
-                        <option value="없음">없음</option>
-                        <option value="자유통화3">자유통화3</option>
-                        <option value="자유통화4">자유통화4</option>
-                        <option value="자유통화6">자유통화6</option>
-                        <option value="자유통화8">자유통화8</option>
-                        <option value="자유통화10">자유통화10</option>
-                        <option value="자유통화15">자유통화15</option>
-                        <option value="자유통화20">자유통화20</option>
-                        <option value="자유통화30">자유통화30</option>
-                        <option value="자유통화50">자유통화50</option>
-                    </select>
+                <div class="option-groups">
+                    <div class="option-group">
+                        <label><i class="fas fa-box"></i> 상품 선택:</label>
+                        <select id="sme-voip-product">
+                            <option value="DCS">DCS</option>
+                            <option value="고급형DCS">고급형DCS</option>
+                            <option value="고급형센트릭스" selected>고급형센트릭스</option>
+                            <option value="일반형">일반형</option>
+                        </select>
+                    </div>
+                    <div class="option-group" id="sme-voip-plan-group">
+                        <label><i class="fas fa-money-bill-wave"></i> 요금제:</label>
+                        <select id="sme-voip-plan">
+                            <option value="종량제">종량제</option>
+                            <option value="정액제" selected>정액제</option>
+                        </select>
+                    </div>
+                    <div class="option-group">
+                        <label><i class="fas fa-network-wired"></i> 회선 수:</label>
+                        <input type="number" id="sme-voip-lines" min="1" value="1">
+                    </div>
+                    <div class="option-group">
+                        <label><i class="fas fa-mobile-alt"></i> 단말기:</label>
+                        <select id="sme-voip-device">
+                            <option value="IP-450S">IP-450S</option>
+                            <option value="IP-450P">IP-450P</option>
+                            <option value="IP-300S">IP-300S</option>
+                            <option value="IP-520S">IP-520S</option>
+                            <option value="IP-520G">IP-520G</option>
+                            <option value="MWP2500E">MWP2500E</option>
+                            <option value="GAPM-7500E">GAPM-7500E</option>
+                            <option value="IP-700S(본체) + EK-700S(확장)">IP-700S(본체) + EK-700S(확장)</option>
+                            <option value="CPG 1Port">CPG 1Port</option>
+                        </select>
+                    </div>
+                    <div class="option-group" id="sme-voip-feature-group">
+                        <label><i class="fas fa-comments"></i> 자유통화 선택:</label>
+                        <select id="sme-voip-feature">
+                            <option value="없음">없음</option>
+                            <option value="자유통화3">자유통화3</option>
+                            <option value="자유통화4">자유통화4</option>
+                            <option value="자유통화6">자유통화6</option>
+                            <option value="자유통화8">자유통화8</option>
+                            <option value="자유통화10">자유통화10</option>
+                            <option value="자유통화15">자유통화15</option>
+                            <option value="자유통화20">자유통화20</option>
+                            <option value="자유통화30">자유통화30</option>
+                            <option value="자유통화50">자유통화50</option>
+                        </select>
+                    </div>
                 </div>
             </div>
 
             <!-- SME IPTV -->
             <div id="sme-iptv" class="product-component">
                 <h4><i class="fas fa-tv"></i> SME IPTV</h4>
-                <div class="option-group">
-                    <label><i class="fas fa-box"></i> 상품 선택:</label>
-                    <select id="sme-iptv-product">
-                        <option value="베이직">베이직</option>
-                        <option value="프리미엄">프리미엄</option>
-                        <option value="단체형 일반형">단체형 일반형</option>
-                    </select>
-                </div>
-                <div class="option-group" id="sme-iptv-wifi-group" style="display:none;">
-                    <label><i class="fas fa-wifi"></i> WIFI 선택:</label>
-                    <select id="sme-iptv-wifi">
-                        <option value="없음">없음</option>
-                        <option value="기가WIFI">기가WIFI</option>
-                        <option value="프리미엄WIFI">프리미엄WIFI</option>
-                    </select>
-                </div>
-                <div class="option-group">
-                    <label><i class="fas fa-network-wired"></i> 회선 수:</label>
-                    <input type="number" id="sme-iptv-lines" min="1" value="1">
-                </div>
-                <div class="option-group">
-                    <label><i class="fas fa-hdd"></i> 단말기:</label>
-                    <select id="sme-iptv-device">
-                        <option value="UHD">UHD</option>
-                        <option value="가온">가온</option>
-                    </select>
+                <div class="option-groups">
+                    <div class="option-group">
+                        <label><i class="fas fa-box"></i> 상품 선택:</label>
+                        <select id="sme-iptv-product">
+                            <option value="베이직">베이직</option>
+                            <option value="프리미엄">프리미엄</option>
+                            <option value="단체형 일반형">단체형 일반형</option>
+                        </select>
+                    </div>
+                    <div class="option-group" id="sme-iptv-wifi-group" style="display:none;">
+                        <label><i class="fas fa-wifi"></i> WIFI 선택:</label>
+                        <select id="sme-iptv-wifi">
+                            <option value="없음">없음</option>
+                            <option value="기가WIFI">기가WIFI</option>
+                            <option value="프리미엄WIFI">프리미엄WIFI</option>
+                        </select>
+                    </div>
+                    <div class="option-group">
+                        <label><i class="fas fa-network-wired"></i> 회선 수:</label>
+                        <input type="number" id="sme-iptv-lines" min="1" value="1">
+                    </div>
+                    <div class="option-group">
+                        <label><i class="fas fa-hdd"></i> 단말기:</label>
+                        <select id="sme-iptv-device">
+                            <option value="UHD">UHD</option>
+                            <option value="가온">가온</option>
+                        </select>
+                    </div>
                 </div>
             </div>
         </div>
@@ -158,205 +164,217 @@
             <!-- 소호 인터넷 -->
             <div id="soho-internet" class="product-component active">
                 <h4><i class="fas fa-wifi"></i> 소호 인터넷</h4>
-                <div class="option-group">
-                    <label><i class="fas fa-box"></i> 상품 선택:</label>
-                    <select id="soho-internet-product">
-                        <option value="유선인터넷">유선인터넷</option>
-                        <option value="인터넷_결제안심">인터넷_결제안심</option>
-                        <option value="무선인터넷">무선인터넷</option>
-                    </select>
-                </div>
-                <div class="option-group" id="soho-internet-speed-group">
-                    <label><i class="fas fa-tachometer-alt"></i> 속도 선택:</label>
-                    <select id="soho-internet-speed">
-                        <option value="100M">100M</option>
-                        <option value="500M">500M</option>
-                        <option value="1G">1G</option>
-                    </select>
-                </div>
-                <div class="option-group" id="soho-internet-wireless-group" style="display:none;">
-                    <label><i class="fas fa-broadcast-tower"></i> 무선 상품:</label>
-                    <select id="soho-internet-wireless">
-                        <option value="베이직">베이직</option>
-                        <option value="프리미엄">프리미엄</option>
-                    </select>
-                </div>
-                <div class="option-group">
-                    <label><i class="fas fa-network-wired"></i> 회선 수:</label>
-                    <input type="number" id="soho-internet-lines" min="1" value="1">
+                <div class="option-groups">
+                    <div class="option-group">
+                        <label><i class="fas fa-box"></i> 상품 선택:</label>
+                        <select id="soho-internet-product">
+                            <option value="유선인터넷">유선인터넷</option>
+                            <option value="인터넷_결제안심">인터넷_결제안심</option>
+                            <option value="무선인터넷">무선인터넷</option>
+                        </select>
+                    </div>
+                    <div class="option-group" id="soho-internet-speed-group">
+                        <label><i class="fas fa-tachometer-alt"></i> 속도 선택:</label>
+                        <select id="soho-internet-speed">
+                            <option value="100M">100M</option>
+                            <option value="500M">500M</option>
+                            <option value="1G">1G</option>
+                        </select>
+                    </div>
+                    <div class="option-group" id="soho-internet-wireless-group" style="display:none;">
+                        <label><i class="fas fa-broadcast-tower"></i> 무선 상품:</label>
+                        <select id="soho-internet-wireless">
+                            <option value="베이직">베이직</option>
+                            <option value="프리미엄">프리미엄</option>
+                        </select>
+                    </div>
+                    <div class="option-group">
+                        <label><i class="fas fa-network-wired"></i> 회선 수:</label>
+                        <input type="number" id="soho-internet-lines" min="1" value="1">
+                    </div>
                 </div>
             </div>
 
             <!-- 소호 인터넷전화 -->
             <div id="soho-voip" class="product-component">
                 <h4><i class="fas fa-phone"></i> 소호 인터넷전화</h4>
-                <div class="option-group">
-                    <label><i class="fas fa-box"></i> 상품 선택:</label>
-                    <select id="soho-voip-product">
-                        <option value="고급형센트릭스">고급형센트릭스</option>
-                        <option value="일반형">일반형</option>
-                    </select>
-                </div>
-                <div class="option-group" id="soho-voip-plan-group">
-                    <label><i class="fas fa-money-bill-wave"></i> 요금제:</label>
-                    <select id="soho-voip-plan">
-                        <option value="종량제">종량제</option>
-                        <option value="정액제" selected>정액제</option>
-                    </select>
-                </div>
-                <div class="option-group">
-                    <label><i class="fas fa-network-wired"></i> 회선 수:</label>
-                    <input type="number" id="soho-voip-lines" min="1" value="1">
-                </div>
-                <div class="option-group">
-                    <label><i class="fas fa-mobile-alt"></i> 단말기:</label>
-                    <select id="soho-voip-device">
-                        <option value="IP-450S">IP-450S</option>
-                        <option value="IP-450P">IP-450P</option>
-                        <option value="IP-300S">IP-300S</option>
-                        <option value="IP-520S">IP-520S</option>
-                        <option value="IP-520G">IP-520G</option>
-                        <option value="MWP2500E">MWP2500E</option>
-                        <option value="GAPM-7500E">GAPM-7500E</option>
-                        <option value="IP-700S(본체) + EK-700S(확장)">IP-700S(본체) + EK-700S(확장)</option>
-                        <option value="CPG 1Port">CPG 1Port</option>
-                    </select>
-                </div>
-                <div class="option-group" id="soho-voip-feature-group">
-                    <label><i class="fas fa-comments"></i> 자유통화 선택:</label>
-                    <select id="soho-voip-feature">
-                        <option value="없음" selected>없음</option>
-                        <option value="자유통화3">자유통화3</option>
-                        <option value="자유통화4">자유통화4</option>
-                        <option value="자유통화6">자유통화6</option>
-                        <option value="자유통화8">자유통화8</option>
-                        <option value="자유통화10">자유통화10</option>
-                        <option value="자유통화15">자유통화15</option>
-                        <option value="자유통화20">자유통화20</option>
-                        <option value="자유통화30">자유통화30</option>
-                        <option value="자유통화50">자유통화50</option>
-                    </select>
+                <div class="option-groups">
+                    <div class="option-group">
+                        <label><i class="fas fa-box"></i> 상품 선택:</label>
+                        <select id="soho-voip-product">
+                            <option value="고급형센트릭스">고급형센트릭스</option>
+                            <option value="일반형">일반형</option>
+                        </select>
+                    </div>
+                    <div class="option-group" id="soho-voip-plan-group">
+                        <label><i class="fas fa-money-bill-wave"></i> 요금제:</label>
+                        <select id="soho-voip-plan">
+                            <option value="종량제">종량제</option>
+                            <option value="정액제" selected>정액제</option>
+                        </select>
+                    </div>
+                    <div class="option-group">
+                        <label><i class="fas fa-network-wired"></i> 회선 수:</label>
+                        <input type="number" id="soho-voip-lines" min="1" value="1">
+                    </div>
+                    <div class="option-group">
+                        <label><i class="fas fa-mobile-alt"></i> 단말기:</label>
+                        <select id="soho-voip-device">
+                            <option value="IP-450S">IP-450S</option>
+                            <option value="IP-450P">IP-450P</option>
+                            <option value="IP-300S">IP-300S</option>
+                            <option value="IP-520S">IP-520S</option>
+                            <option value="IP-520G">IP-520G</option>
+                            <option value="MWP2500E">MWP2500E</option>
+                            <option value="GAPM-7500E">GAPM-7500E</option>
+                            <option value="IP-700S(본체) + EK-700S(확장)">IP-700S(본체) + EK-700S(확장)</option>
+                            <option value="CPG 1Port">CPG 1Port</option>
+                        </select>
+                    </div>
+                    <div class="option-group" id="soho-voip-feature-group">
+                        <label><i class="fas fa-comments"></i> 자유통화 선택:</label>
+                        <select id="soho-voip-feature">
+                            <option value="없음" selected>없음</option>
+                            <option value="자유통화3">자유통화3</option>
+                            <option value="자유통화4">자유통화4</option>
+                            <option value="자유통화6">자유통화6</option>
+                            <option value="자유통화8">자유통화8</option>
+                            <option value="자유통화10">자유통화10</option>
+                            <option value="자유통화15">자유통화15</option>
+                            <option value="자유통화20">자유통화20</option>
+                            <option value="자유통화30">자유통화30</option>
+                            <option value="자유통화50">자유통화50</option>
+                        </select>
+                    </div>
                 </div>
             </div>
 
             <!-- 소호 IPTV -->
             <div id="soho-iptv" class="product-component">
                 <h4><i class="fas fa-tv"></i> 소호 IPTV</h4>
-                <div class="option-group">
-                    <label><i class="fas fa-box"></i> 상품 선택:</label>
-                    <select id="soho-iptv-product">
-                        <option value="베이직">베이직</option>
-                        <option value="프리미엄">프리미엄</option>
-                    </select>
-                </div>
-                <div class="option-group">
-                    <label><i class="fas fa-network-wired"></i> 회선 수:</label>
-                    <input type="number" id="soho-iptv-lines" min="1" value="1">
-                </div>
-                <div class="option-group">
-                    <label><i class="fas fa-hdd"></i> 단말기:</label>
-                    <select id="soho-iptv-device">
-                        <option value="UHD">UHD</option>
-                        <option value="가온">가온</option>
-                    </select>
+                <div class="option-groups">
+                    <div class="option-group">
+                        <label><i class="fas fa-box"></i> 상품 선택:</label>
+                        <select id="soho-iptv-product">
+                            <option value="베이직">베이직</option>
+                            <option value="프리미엄">프리미엄</option>
+                        </select>
+                    </div>
+                    <div class="option-group">
+                        <label><i class="fas fa-network-wired"></i> 회선 수:</label>
+                        <input type="number" id="soho-iptv-lines" min="1" value="1">
+                    </div>
+                    <div class="option-group">
+                        <label><i class="fas fa-hdd"></i> 단말기:</label>
+                        <select id="soho-iptv-device">
+                            <option value="UHD">UHD</option>
+                            <option value="가온">가온</option>
+                        </select>
+                    </div>
                 </div>
             </div>
 
             <!-- 소호 AI전화 -->
             <div id="soho-ai-phone" class="product-component">
                 <h4><i class="fas fa-robot"></i> 소호 AI전화</h4>
-                <div class="option-group">
-                    <label><i class="fas fa-money-bill-wave"></i> 요금제:</label>
-                    <select id="soho-ai-phone-plan">
-                        <option value="정액제">정액제</option>
-                        <option value="부가">부가</option>
-                    </select>
-                </div>
-                <div class="option-group">
-                    <label><i class="fas fa-network-wired"></i> 회선 수:</label>
-                    <input type="number" id="soho-ai-phone-lines" min="1" value="1">
-                </div>
-                <div class="option-group" id="soho-ai-phone-device-group">
-                    <label><i class="fas fa-mobile-alt"></i> 단말기:</label>
-                    <select id="soho-ai-phone-device">
-                        <option value="IP-450S">IP-450S</option>
-                        <option value="IP-450P">IP-450P</option>
-                        <option value="IP-300S">IP-300S</option>
-                        <option value="IP-520S">IP-520S</option>
-                        <option value="IP-520G">IP-520G</option>
-                        <option value="MWP2500E">MWP2500E</option>
-                        <option value="GAPM-7500E">GAPM-7500E</option>
-                        <option value="IP-700S(본체) + EK-700S(확장)">IP-700S(본체) + EK-700S(확장)</option>
-                        <option value="CPG 1Port">CPG 1Port</option>
-                    </select>
+                <div class="option-groups">
+                    <div class="option-group">
+                        <label><i class="fas fa-money-bill-wave"></i> 요금제:</label>
+                        <select id="soho-ai-phone-plan">
+                            <option value="정액제">정액제</option>
+                            <option value="부가">부가</option>
+                        </select>
+                    </div>
+                    <div class="option-group">
+                        <label><i class="fas fa-network-wired"></i> 회선 수:</label>
+                        <input type="number" id="soho-ai-phone-lines" min="1" value="1">
+                    </div>
+                    <div class="option-group" id="soho-ai-phone-device-group">
+                        <label><i class="fas fa-mobile-alt"></i> 단말기:</label>
+                        <select id="soho-ai-phone-device">
+                            <option value="IP-450S">IP-450S</option>
+                            <option value="IP-450P">IP-450P</option>
+                            <option value="IP-300S">IP-300S</option>
+                            <option value="IP-520S">IP-520S</option>
+                            <option value="IP-520G">IP-520G</option>
+                            <option value="MWP2500E">MWP2500E</option>
+                            <option value="GAPM-7500E">GAPM-7500E</option>
+                            <option value="IP-700S(본체) + EK-700S(확장)">IP-700S(본체) + EK-700S(확장)</option>
+                            <option value="CPG 1Port">CPG 1Port</option>
+                        </select>
+                    </div>
                 </div>
             </div>
 
             <!-- 소호 DX솔루션 -->
             <div id="soho-dx-solution" class="product-component">
                 <h4><i class="fas fa-laptop-code"></i> 소호 DX솔루션</h4>
-                <div class="option-group">
-                    <label><i class="fas fa-box"></i> 상품 선택:</label>
-                    <select id="soho-dx-product">
-                        <option value="태이블오더">태이블오더</option>
-                        <option value="포스">포스</option>
-                        <option value="키오스크">키오스크</option>
-                    </select>
-                </div>
-                <div class="option-group" id="soho-dx-table-group">
-                    <label><i class="fas fa-clipboard-list"></i> 태이블오더 유형:</label>
-                    <select id="soho-dx-table-type">
-                        <option value="호환성">호환성</option>
-                        <option value="선불형">선불형</option>
-                    </select>
-                </div>
-                <div class="option-group">
-                    <label><i class="fas fa-sort-numeric-up"></i> 수량:</label>
-                    <input type="number" id="soho-dx-quantity" min="1" value="1">
-                </div>
-                <div class="option-group" id="soho-dx-device-group">
-                    <label><i class="fas fa-desktop"></i> 장비 선택:</label>
-                    <select id="soho-dx-device">
-                        <option value="듀얼모니터">듀얼모니터</option>
-                        <option value="IC피더기">IC피더기</option>
-                        <option value="서명패드">서명패드</option>
-                        <option value="영수증프린터/주방프린터">영수증프린터/주방프린터</option>
-                        <option value="KDS주방프린터">KDS주방프린터</option>
-                    </select>
-                </div>
-                <div class="option-group" id="soho-dx-kiosk-group" style="display:none;">
-                    <label><i class="fas fa-tablet-alt"></i> 키오스크 유형:</label>
-                    <select id="soho-dx-kiosk-type">
-                        <option value="스탠드형/일체">스탠드형/일체</option>
-                        <option value="CAT단말기">CAT단말기</option>
-                    </select>
+                <div class="option-groups">
+                    <div class="option-group">
+                        <label><i class="fas fa-box"></i> 상품 선택:</label>
+                        <select id="soho-dx-product">
+                            <option value="태이블오더">태이블오더</option>
+                            <option value="포스">포스</option>
+                            <option value="키오스크">키오스크</option>
+                        </select>
+                    </div>
+                    <div class="option-group" id="soho-dx-table-group">
+                        <label><i class="fas fa-clipboard-list"></i> 태이블오더 유형:</label>
+                        <select id="soho-dx-table-type">
+                            <option value="호환성">호환성</option>
+                            <option value="선불형">선불형</option>
+                        </select>
+                    </div>
+                    <div class="option-group">
+                        <label><i class="fas fa-sort-numeric-up"></i> 수량:</label>
+                        <input type="number" id="soho-dx-quantity" min="1" value="1">
+                    </div>
+                    <div class="option-group" id="soho-dx-device-group">
+                        <label><i class="fas fa-desktop"></i> 장비 선택:</label>
+                        <select id="soho-dx-device">
+                            <option value="듀얼모니터">듀얼모니터</option>
+                            <option value="IC피더기">IC피더기</option>
+                            <option value="서명패드">서명패드</option>
+                            <option value="영수증프린터/주방프린터">영수증프린터/주방프린터</option>
+                            <option value="KDS주방프린터">KDS주방프린터</option>
+                        </select>
+                    </div>
+                    <div class="option-group" id="soho-dx-kiosk-group" style="display:none;">
+                        <label><i class="fas fa-tablet-alt"></i> 키오스크 유형:</label>
+                        <select id="soho-dx-kiosk-type">
+                            <option value="스탠드형/일체">스탠드형/일체</option>
+                            <option value="CAT단말기">CAT단말기</option>
+                        </select>
+                    </div>
                 </div>
             </div>
 
             <!-- 소호 지능형CCTV -->
             <div id="soho-cctv" class="product-component">
                 <h4><i class="fas fa-video"></i> 소호 지능형CCTV</h4>
-                <div class="option-group">
-                    <label><i class="fas fa-box"></i> 상품 선택:</label>
-                    <select id="soho-cctv-product">
-                        <option value="에스원안심">에스원안심</option>
-                        <option value="출입관리기">출입관리기</option>
-                    </select>
-                </div>
-                <div class="option-group">
-                    <label><i class="fas fa-sort-numeric-up"></i> 수량:</label>
-                    <input type="number" id="soho-cctv-quantity" min="1" value="1">
+                <div class="option-groups">
+                    <div class="option-group">
+                        <label><i class="fas fa-box"></i> 상품 선택:</label>
+                        <select id="soho-cctv-product">
+                            <option value="에스원안심">에스원안심</option>
+                            <option value="출입관리기">출입관리기</option>
+                        </select>
+                    </div>
+                    <div class="option-group">
+                        <label><i class="fas fa-sort-numeric-up"></i> 수량:</label>
+                        <input type="number" id="soho-cctv-quantity" min="1" value="1">
+                    </div>
                 </div>
             </div>
         </div>
 
         <!-- 장바구니 -->
         <div class="cart-container">
+            <button id="add-to-cart"><i class="fas fa-plus-circle"></i> 상품에 추가</button>
             <h3><i class="fas fa-shopping-cart"></i> 선택한 상품</h3>
             <div id="cart-items">
                 <!-- 상품 아이템이 여기에 추가됩니다 -->
             </div>
-            <button id="add-to-cart"><i class="fas fa-plus-circle"></i> 상품에 추가</button>
         </div>
 
         <!-- 계산 결과 -->

@@ -1079,6 +1079,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // 다시 계산하기 함수
     function resetCalculation() {
+        // 현재 활성화된 카테고리 탭 기억
+        const activeTab = document.querySelector('.tab-button.active');
+        const activeCategory = activeTab ? activeTab.getAttribute('data-category') : 'soho';
+
         // 장바구니 비우기
         cartItems.length = 0;
         updateCartDisplay();
@@ -1095,21 +1099,40 @@ document.addEventListener('DOMContentLoaded', function() {
         document.querySelectorAll('input[type="number"]').forEach(input => {
             input.value = 1;
         });
-        
-        // 첫 번째 카테고리 탭 활성화
-        document.querySelectorAll('.tab-button').forEach((tab, index) => {
-            if (index === 0) {
-                tab.click();
+
+        // 카테고리 탭 활성화 (기존 활성화된 카테고리로)
+        document.querySelectorAll('.tab-button').forEach(tab => {
+            if (tab.getAttribute('data-category') === activeCategory) {
+                tab.classList.add('active');
+            } else {
+                tab.classList.remove('active');
+            }
+        });
+        // 카테고리 컴포넌트 표시
+        document.querySelectorAll('.component-container').forEach(container => {
+            if (container.id === `${activeCategory}-components`) {
+                container.classList.add('active');
+            } else {
+                container.classList.remove('active');
             }
         });
         
-        // 첫 번째 제품 탭 활성화
-        document.querySelectorAll('#sme-components .product-tab').forEach((tab, index) => {
+        // 첫 번째 제품 탭 활성화 (해당 카테고리 내에서만)
+        document.querySelectorAll(`#${activeCategory}-components .product-tab`).forEach((tab, index) => {
             if (index === 0) {
-                tab.click();
+                tab.classList.add('active');
+            } else {
+                tab.classList.remove('active');
             }
         });
-        
+        document.querySelectorAll(`#${activeCategory}-components .product-component`).forEach((component, index) => {
+            if (index === 0) {
+                component.classList.add('active');
+            } else {
+                component.classList.remove('active');
+            }
+        });
+
         // 애니메이션 효과 추가
         const cartContainer = document.querySelector('.cart-container');
         cartContainer.style.transition = 'all 0.3s ease';
