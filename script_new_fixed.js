@@ -1425,7 +1425,8 @@ document.addEventListener('DOMContentLoaded', function() {
                                 
                                 // 각 항목별 할인 적용
                                 totalBasicFee -= internetDiscount;
-                                totalDeviceFee -= voipDiscount;
+                                // totalDeviceFee -= voipDiscount; // 기존: 장비임대료에서 차감
+                                totalBasicFee -= voipDiscount; // 수정: 기본료에서 차감
                                 totalInstallationFee -= installationDiscount;
                             }
                         }
@@ -1567,6 +1568,19 @@ document.addEventListener('DOMContentLoaded', function() {
             const voipDisc = totalDeviceFee - (totalDeviceFee + totalBundleDiscount);
             const installDisc = totalInstallationFee - (totalInstallationFee + totalBundleDiscount);
             
+            // 할인 금액 안전하게 표시하는 함수
+            function safeDiscountText(label, value) {
+                if (typeof value === 'number' && !isNaN(value) && value !== 0) {
+                    return `<span class="discount-detail">${label}: -${Math.abs(value).toLocaleString()}원</span>`;
+                }
+                return '';
+            }
+            
+            let discountHtml = '';
+            discountHtml += safeDiscountText('기본료 할인', internetDisc);
+            discountHtml += safeDiscountText('장비임대료 할인', voipDisc);
+            discountHtml += safeDiscountText('설치비 할인', installDisc);
+            
             resultContainer.innerHTML = `
                 <h3><i class="fas fa-chart-line"></i> 요금 계산 결과</h3>
                 <p><i class="fas fa-won-sign"></i> ${basicFeeDescription} ${basicFeeDescriptionText}: ${totalBasicFee.toLocaleString()}원</p>
@@ -1575,9 +1589,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <p><i class="fas fa-tools"></i> ${installationFeeDescription}: ${totalInstallationFee.toLocaleString()}원</p>
                 ${totalBundleDiscount > 0 ? `
                     <p><i class="fas fa-percentage"></i> 결합 할인:</p>
-                    <p class="discount-detail">- 인터넷 할인: -${internetDisc.toLocaleString()}원</p>
-                    <p class="discount-detail">- 인터넷전화 할인: -${voipDisc.toLocaleString()}원</p>
-                    <p class="discount-detail">- 설치비 할인: -${installDisc.toLocaleString()}원</p>
+                    ${discountHtml}
                 ` : ''}
                 <p class="total-price"><i class="fas fa-check-circle"></i> <strong>월 사용료 (VAT별도): ${finalTotalRounded.toLocaleString()}원</strong></p>
             `;
@@ -1741,7 +1753,6 @@ document.addEventListener('DOMContentLoaded', function() {
         // SME 인터넷전화 요금제 변경 이벤트 처리
         const smePlanSelect = document.getElementById('sme-voip-plan');
         const smeFeatureGroup = document.getElementById('sme-voip-feature-group');
-        
         smePlanSelect.addEventListener('change', function() {
             if (this.value === '종량제') {
                 smeFeatureGroup.style.display = 'none';
@@ -1749,11 +1760,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 smeFeatureGroup.style.display = 'block';
             }
         });
-        
         // 소호 인터넷전화 요금제 변경 이벤트 처리
         const sohoPlanSelect = document.getElementById('soho-voip-plan');
         const sohoFeatureGroup = document.getElementById('soho-voip-feature-group');
-        
         sohoPlanSelect.addEventListener('change', function() {
             if (this.value === '종량제') {
                 sohoFeatureGroup.style.display = 'none';
@@ -1761,11 +1770,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 sohoFeatureGroup.style.display = 'block';
             }
         });
-        
         // SME 인터넷전화 상품 변경 이벤트 처리
         const smeProductSelect = document.getElementById('sme-voip-product');
         const smePlanGroup = document.getElementById('sme-voip-plan-group');
-        
         smeProductSelect.addEventListener('change', function() {
             if (this.value === '일반형') {
                 // 일반형 선택 시 종량제만 표시
@@ -1778,14 +1785,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 // 현재 선택된 요금제가 정액제이면 자유통화 표시
                 if (smePlanSelect.value === '정액제') {
                     smeFeatureGroup.style.display = 'block';
+                } else {
+                    smeFeatureGroup.style.display = 'none';
                 }
             }
         });
-        
         // 소호 인터넷전화 상품 변경 이벤트 처리
         const sohoProductSelect = document.getElementById('soho-voip-product');
         const sohoPlanGroup = document.getElementById('soho-voip-plan-group');
-        
         sohoProductSelect.addEventListener('change', function() {
             if (this.value === '일반형') {
                 // 일반형 선택 시 종량제만 표시
@@ -1798,26 +1805,24 @@ document.addEventListener('DOMContentLoaded', function() {
                 // 현재 선택된 요금제가 정액제이면 자유통화 표시
                 if (sohoPlanSelect.value === '정액제') {
                     sohoFeatureGroup.style.display = 'block';
+                } else {
+                    sohoFeatureGroup.style.display = 'none';
                 }
             }
         });
-        
         // 초기 상태 설정
         if (smePlanSelect.value === '종량제') {
             smeFeatureGroup.style.display = 'none';
         }
-        
         if (sohoPlanSelect.value === '종량제') {
             sohoFeatureGroup.style.display = 'none';
         }
-        
         // 초기 상품 상태에 따른 UI 설정
         if (smeProductSelect.value === '일반형') {
             smePlanSelect.value = '종량제';
             smePlanGroup.style.display = 'none';
             smeFeatureGroup.style.display = 'none';
         }
-        
         if (sohoProductSelect.value === '일반형') {
             sohoPlanSelect.value = '종량제';
             sohoPlanGroup.style.display = 'none';
