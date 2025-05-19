@@ -332,6 +332,15 @@ document.addEventListener('DOMContentLoaded', function() {
                             // 헤더에서 자유통화 열 찾기 (컬럼 4부터 자유통화 컬럼)
                             for (let colNumber = 4; colNumber <= row.cellCount; colNumber++) {
                                 const colHeader = headerValues[colNumber];
+                                if (colHeader === 'AI전화') {
+                                    const disc = row.getCell(colNumber).value || '';
+                                    const pct = parseInt(disc, 10);
+                                    if (!isNaN(pct)) {
+                                        deviceFeatureDiscounts[deviceName]['AI전화'] = { type: 'percent', value: pct };
+                                        console.log(`단말기 할인: ${deviceName} - AI전화 - ${pct}%`);
+                                    }
+                                    continue;
+                                }
                                 if (colHeader && colHeader.toString().startsWith('자유통화')) {
                                     const discountStr = row.getCell(colNumber).value;
                                     
@@ -426,18 +435,14 @@ document.addEventListener('DOMContentLoaded', function() {
                     bundleSheet.eachRow({ includeEmpty: false }, function(row, rowNumber) {
                         if (rowNumber > 1) { // 헤더 제외
                             // 1) 카테고리
-                            const category = row.getCell(1).value || 'SME';  // "SME", "소호" 등
-                            
+                            const category = row.getCell(1).value || 'SME';
                             // 2) 결합유형 처리: 언더바(_)로 분리
                             const bundleType = row.getCell(2).value;
                             const parts = bundleType ? bundleType.split('_') : [];
-                            
                             // 상품키 및 자유통화 범위 분리
                             const productKeys = [];
                             let featureRange = null;
-                            
                             parts.forEach(p => {
-                                // "자유통화(x ~ y)" 형태의 범위 감지
                                 const m = p.match(/^자유통화\((\d+)\s*~\s*(\d+)\)$/);
                                 if (m) {
                                     featureRange = { 
@@ -449,39 +454,34 @@ document.addEventListener('DOMContentLoaded', function() {
                                     productKeys.push(p);
                                 }
                             });
-                            
                             // 3) 화면 표시용 이름
                             const displayName = row.getCell(3).value || bundleType;
-                            
-                            // 4-5) 할인율과 할인금액
-                            const discountRate = Number(row.getCell(4).value) || 0;
-                            const discountAmount = Number(row.getCell(5).value) || 0;
-                            
-                            // 타입 및 값 결정
-                            const type = discountAmount > 0 ? 'fixed' : 'percent';
-                            const value = type === 'fixed' ? discountAmount : discountRate;
-                            
+                            // 4) 할인율(%) 컬럼은 무시
+                            // 5-7) 각 할인 금액 (엑셀 컬럼 순서에 맞게)
+                            const internetDiscount     = Number(row.getCell(5).value) || 0;
+                            const voipDiscount         = Number(row.getCell(6).value) || 0;
+                            const installationDiscount = Number(row.getCell(7).value) || 0;
                             if (bundleType) {
-                                // 6) 배열에 추가
                                 const discountItem = { 
                                     category, 
-                                    productKeys,    // 예: ["IP450S"], ["인터넷", "인터넷전화"]
-                                    featureRange,   // 예: {feature:'자유통화', min:3, max:50} 또는 null
-                                    displayName, 
-                                    type, 
-                                    value 
+                                    productKeys,    
+                                    featureRange,   
+                                    displayName,
+                                    internetDiscount,
+                                    voipDiscount,
+                                    installationDiscount
                                 };
-                                
                                 bundleDiscounts.push(discountItem);
-                                
-                                console.log(`결합할인: ${category} - ${bundleType} - ${displayName} - ${type}: ${value}`);
+                                console.log(`결합할인: ${category} - ${bundleType} - ${displayName}`);
+                                console.log(`- 인터넷 할인: ${internetDiscount}원`);
+                                console.log(`- 인터넷전화 할인: ${voipDiscount}원`);
+                                console.log(`- 설치비 할인: ${installationDiscount}원`);
                                 if (featureRange) {
                                     console.log(`자유통화 범위: ${featureRange.min} ~ ${featureRange.max}`);
                                 }
                             }
                         }
                     });
-                    
                     console.log('결합할인 데이터(배열):', bundleDiscounts);
                 } else {
                     console.warn('결합할인 시트를 찾을 수 없습니다.');
@@ -641,7 +641,8 @@ document.addEventListener('DOMContentLoaded', function() {
             { header: '자유통화15', key: 'feature15', width: 15 },
             { header: '자유통화20', key: 'feature20', width: 15 },
             { header: '자유통화30', key: 'feature30', width: 15 },
-            { header: '자유통화50', key: 'feature50', width: 15 }
+            { header: '자유통화50', key: 'feature50', width: 15 },
+            { header: 'AI전화', key: 'aiPhone', width: 15 }
         ];
         
         // 샘플 데이터 추가 - 요청한 데이터로 변경
@@ -657,7 +658,8 @@ document.addEventListener('DOMContentLoaded', function() {
             feature15: '100%할인',
             feature20: '100%할인',
             feature30: '100%할인',
-            feature50: '100%할인'
+            feature50: '100%할인',
+            aiPhone: '100%할인'
         });
         deviceSheet.addRow({ 
             deviceName: 'IP-450P', 
@@ -671,7 +673,8 @@ document.addEventListener('DOMContentLoaded', function() {
             feature15: '100%할인',
             feature20: '100%할인',
             feature30: '100%할인',
-            feature50: '100%할인'
+            feature50: '100%할인',
+            aiPhone: '100%할인'
         });
         deviceSheet.addRow({ 
             deviceName: 'IP-300S', 
@@ -685,7 +688,8 @@ document.addEventListener('DOMContentLoaded', function() {
             feature15: '100%할인',
             feature20: '100%할인',
             feature30: '100%할인',
-            feature50: '100%할인'
+            feature50: '100%할인',
+            aiPhone: '100%할인'
         });
         deviceSheet.addRow({ 
             deviceName: 'IP-520S', 
@@ -699,7 +703,8 @@ document.addEventListener('DOMContentLoaded', function() {
             feature15: '100%할인',
             feature20: '100%할인',
             feature30: '100%할인',
-            feature50: '100%할인'
+            feature50: '100%할인',
+            aiPhone: '100%할인'
         });
         deviceSheet.addRow({ 
             deviceName: 'IP-520G', 
@@ -713,7 +718,8 @@ document.addEventListener('DOMContentLoaded', function() {
             feature15: '100%할인',
             feature20: '100%할인',
             feature30: '100%할인',
-            feature50: '100%할인'
+            feature50: '100%할인',
+            aiPhone: '50%할인'
         });
         deviceSheet.addRow({ 
             deviceName: 'MWP2500E', 
@@ -727,7 +733,8 @@ document.addEventListener('DOMContentLoaded', function() {
             feature15: '50%할인',
             feature20: '50%할인',
             feature30: '50%할인',
-            feature50: '50%할인'
+            feature50: '50%할인',
+            aiPhone: '50%할인'
         });
         deviceSheet.addRow({ 
             deviceName: 'GAPM-7500E', 
@@ -741,7 +748,8 @@ document.addEventListener('DOMContentLoaded', function() {
             feature15: '100%할인',
             feature20: '100%할인',
             feature30: '100%할인',
-            feature50: '100%할인'
+            feature50: '100%할인',
+            aiPhone: '100%할인'
         });
         deviceSheet.addRow({ 
             deviceName: 'IP-700S(본체)+EK-700S(확장)', 
@@ -755,22 +763,38 @@ document.addEventListener('DOMContentLoaded', function() {
             feature15: '50%할인',
             feature20: '50%할인',
             feature30: '50%할인',
-            feature50: '50%할인'
+            feature50: '50%할인',
+            aiPhone: '50%할인'
         });
         deviceSheet.addRow({ 
             deviceName: 'CPG 1Port', 
             standalone: 1000, 
-            bundled: 1000
+            bundled: 1000,
+            aiPhone: ''
         });
         deviceSheet.addRow({ 
             deviceName: 'UHD', 
             standalone: 4000, 
-            bundled: 4000
+            bundled: 4000,
+            aiPhone: ''
         });
         deviceSheet.addRow({ 
             deviceName: '가온', 
             standalone: 3000, 
-            bundled: 3000
+            bundled: 3000,
+            aiPhone: ''
+        });
+        deviceSheet.addRow({ 
+            deviceName: '기가WIFI', 
+            standalone: 3000, 
+            bundled: 3000,
+            aiPhone: ''
+        });
+        deviceSheet.addRow({ 
+            deviceName: '프리미엄WIFI', 
+            standalone: 5000, 
+            bundled: 5000,
+            aiPhone: ''
         });
         
         // 헤더 스타일 적용
@@ -917,6 +941,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 item.option = document.getElementById('sme-iptv-product').value;
                 item.lines = parseInt(document.getElementById('sme-iptv-lines').value) || 1;
                 item.device = document.getElementById('sme-iptv-device').value;
+                // WIFI 선택 정보 추가
+                const wifiSelect = document.getElementById('sme-iptv-wifi');
+                if (wifiSelect && wifiSelect.value) {
+                    item.wifi = wifiSelect.value;
+                }
             }
         } else { // 소호
             const activeProduct = document.querySelector('#soho-components .product-tab.active').getAttribute('data-product');
@@ -949,6 +978,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 item.option = document.getElementById('soho-ai-phone-plan').value;
                 item.lines = parseInt(document.getElementById('soho-ai-phone-lines').value) || 1;
                 item.device = document.getElementById('soho-ai-phone-device').value;
+                // AI전화 할인 적용을 위해 feature 값 명시
+                item.feature = 'AI전화';
             } else if (activeProduct === 'dx-solution') {
                 item.product = 'DX솔루션';
                 item.subProduct = document.getElementById('soho-dx-product').value;
@@ -967,6 +998,8 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
         
+        // 장바구니에 추가 전 로그
+        console.log('addToCart - item:', item);
         cartItems.push(item);
         updateCartDisplay();
     }
@@ -1002,6 +1035,10 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             if (item.feature && item.feature !== '없음') {
                 itemDescription += `<br><i class="fas fa-comments"></i> 자유통화: ${item.feature}`;
+            }
+            // WIFI 정보 표시 추가
+            if (item.wifi) {
+                itemDescription += `<br><i class="fas fa-wifi"></i> WIFI: ${item.wifi}`;
             }
             
             const removeButton = document.createElement('span');
@@ -1138,6 +1175,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // 첫 번째 루프: 상품 수 계산 및 기본 요금 계산
             cartItems.forEach(item => {
+                console.log('calculateTotalPrice - item:', item);
                 // 상품 수 계산
                 if (productCounts[item.category] && productCounts[item.category][item.product] !== undefined) {
                     productCounts[item.category][item.product]++;
@@ -1193,42 +1231,35 @@ document.addEventListener('DOMContentLoaded', function() {
                     // 단말기 추가 요금
                     if (item.device) {
                         let devicePrice = 0;
-                        
                         // 인터넷과 함께 설치하는지 확인 (같은 카테고리에 인터넷 상품이 있는지)
                         const hasInternet = cartItems.some(cartItem => 
                             cartItem.category === item.category && 
                             cartItem.product === '인터넷'
                         );
-                        
-                        console.log(`${item.device} - 인터넷 함께 설치 여부:`, hasInternet);
-                        
                         // 단말기 가격 정보 확인
                         if (deviceStandalonePrices && deviceStandalonePrices[item.device]) {
-                            // 인터넷과 함께 설치하는 경우 번들 가격 적용
+                            // 인터넷과 함께 설치하는 경우(번들): 인터넷+인터넷전화 또는 인터넷+AI전화
                             if (hasInternet && deviceBundledPrices && deviceBundledPrices[item.device]) {
                                 devicePrice = deviceBundledPrices[item.device];
                                 console.log(`단말기 번들 가격 적용: ${item.device}, ${devicePrice}원`);
                             } else {
-                                // 인터넷 없이 단독으로 설치하는 경우 단독 가격 적용
+                                // 인터넷 없이 전화(인터넷전화/AI전화)만 설치하는 경우(단독)
                                 devicePrice = deviceStandalonePrices[item.device];
                                 console.log(`단말기 단독 가격 적용: ${item.device}, ${devicePrice}원`);
                             }
-                            
-                            // 자유통화 할인 확인
+                            // 자유통화/AI전화 할인 확인
                             if (item.feature && item.feature !== '없음' && 
                                 deviceFeatureDiscounts && 
                                 deviceFeatureDiscounts[item.device] && 
                                 deviceFeatureDiscounts[item.device][item.feature]) {
-                                
                                 const discount = deviceFeatureDiscounts[item.device][item.feature];
                                 if (discount.type === 'percent') {
                                     // 퍼센트 할인 적용
                                     const discountAmount = devicePrice * discount.value / 100;
                                     devicePrice -= discountAmount;
-                                    console.log(`단말기 자유통화 할인 적용: ${item.device}, ${item.feature}, ${discount.value}% (${discountAmount}원 할인)`);
+                                    console.log(`단말기 자유통화/AI전화 할인 적용: ${item.device}, ${item.feature}, ${discount.value}% (${discountAmount}원 할인)`);
                                 }
                             }
-                            
                             totalDeviceFee += devicePrice * quantity;
                             console.log(`단말기 가격 추가: ${item.device}, ${devicePrice}원 x ${quantity}`);
                         } else if (devicePrices && devicePrices[item.device]) {
@@ -1344,7 +1375,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (Array.isArray(bundleDiscounts)) {
                     // 배열 형태의 bundleDiscounts 처리
                     bundleDiscounts.forEach(discount => {
-                        const { category, productKeys, featureRange, displayName, type, value } = discount;
+                        const { category, productKeys, featureRange, displayName, internetDiscount, voipDiscount, installationDiscount } = discount;
                         
                         console.log(`할인 규칙 확인 중: ${category} - ${displayName}`);
                         console.log(`- 상품 키: ${productKeys.join(', ')}`);
@@ -1387,31 +1418,18 @@ document.addEventListener('DOMContentLoaded', function() {
                             }
                             
                             if (allProductKeysFound && featureRangeMatched) {
-                                console.log(`할인 적용: ${displayName} (${type}, ${value})`);
+                                console.log(`할인 적용: ${displayName}`);
+                                console.log(`- 인터넷 할인: ${internetDiscount}원`);
+                                console.log(`- 인터넷전화 할인: ${voipDiscount}원`);
+                                console.log(`- 설치비 할인: ${installationDiscount}원`);
                                 
-                                // 할인 적용
-                                if (type === 'fixed') {
-                                    // 고정 금액 할인
-                                    totalBundleDiscount += value;
-                                    console.log(`고정 할인 적용: ${value}원`);
-                                } else {
-                                    // 비율 할인
-                                    const discountAmount = totalBasicFee * value / 100;
-                                    totalBundleDiscount += discountAmount;
-                                    console.log(`비율 할인 적용: ${value}% (${discountAmount}원)`);
-                                }
+                                // 각 항목별 할인 적용
+                                totalBasicFee -= internetDiscount;
+                                totalDeviceFee -= voipDiscount;
+                                totalInstallationFee -= installationDiscount;
                             }
                         }
                     });
-                } else {
-                    // 객체 형태의 bundleDiscounts 처리 (이전 버전 호환성)
-                    console.log('객체 형태의 bundleDiscounts 처리');
-                    // 간단한 할인 적용 (예시)
-                    if (productCounts['SME']['인터넷'] > 0 && productCounts['SME']['인터넷전화'] > 0) {
-                        const discountAmount = totalBasicFee * 0.1; // 10% 할인
-                        totalBundleDiscount += discountAmount;
-                        console.log(`SME 인터넷+인터넷전화 할인: ${discountAmount}원`);
-                    }
                 }
             }
             
@@ -1517,6 +1535,19 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             });
             
+            // WIFI 요금 추가
+            cartItems.forEach(item => {
+                if (item.wifi) {
+                    let wifiPrice = 0;
+                    const quantity = item.lines || item.quantity || 1;
+                    if (deviceStandalonePrices && deviceStandalonePrices[item.wifi]) {
+                        wifiPrice = deviceStandalonePrices[item.wifi];
+                        totalDeviceFee += wifiPrice * quantity;
+                        console.log(`WIFI 요금 추가: ${item.wifi}, ${wifiPrice}원 x ${quantity}`);
+                    }
+                }
+            });
+            
             // 결과 표시
             const resultContainer = document.getElementById('result-container');
             resultContainer.style.display = 'block';
@@ -1531,13 +1562,23 @@ document.addEventListener('DOMContentLoaded', function() {
                 ? `(${deviceDescriptions.join(' + ')})` 
                 : '';
             
+            // 할인 내역 계산
+            const internetDisc = totalBasicFee - (totalBasicFee + totalBundleDiscount);
+            const voipDisc = totalDeviceFee - (totalDeviceFee + totalBundleDiscount);
+            const installDisc = totalInstallationFee - (totalInstallationFee + totalBundleDiscount);
+            
             resultContainer.innerHTML = `
                 <h3><i class="fas fa-chart-line"></i> 요금 계산 결과</h3>
                 <p><i class="fas fa-won-sign"></i> ${basicFeeDescription} ${basicFeeDescriptionText}: ${totalBasicFee.toLocaleString()}원</p>
                 <p><i class="fas fa-hdd"></i> ${deviceFeeDescription} ${deviceDescriptionText}: ${(Math.floor(totalDeviceFee / 10) * 10).toLocaleString()}원</p>
                 <p><i class="fas fa-comments"></i> ${featureFeeDescription}: ${totalSpecialFeatureFee.toLocaleString()}원</p>
                 <p><i class="fas fa-tools"></i> ${installationFeeDescription}: ${totalInstallationFee.toLocaleString()}원</p>
-                ${totalBundleDiscount > 0 ? `<p><i class="fas fa-percentage"></i> 결합 할인: -${totalBundleDiscount.toLocaleString()}원</p>` : ''}
+                ${totalBundleDiscount > 0 ? `
+                    <p><i class="fas fa-percentage"></i> 결합 할인:</p>
+                    <p class="discount-detail">- 인터넷 할인: -${internetDisc.toLocaleString()}원</p>
+                    <p class="discount-detail">- 인터넷전화 할인: -${voipDisc.toLocaleString()}원</p>
+                    <p class="discount-detail">- 설치비 할인: -${installDisc.toLocaleString()}원</p>
+                ` : ''}
                 <p class="total-price"><i class="fas fa-check-circle"></i> <strong>월 사용료 (VAT별도): ${finalTotalRounded.toLocaleString()}원</strong></p>
             `;
             
@@ -1618,6 +1659,15 @@ document.addEventListener('DOMContentLoaded', function() {
                 // 선택한 제품 컴포넌트 표시
                 const product = this.getAttribute('data-product');
                 document.getElementById(`sme-${product}`).classList.add('active');
+
+                // IPTV 탭 선택 시 WIFI 항목 표시 여부 설정
+                if (product === 'iptv') {
+                    const smeIptvProduct = document.getElementById('sme-iptv-product');
+                    const smeIptvWifiGroup = document.getElementById('sme-iptv-wifi-group');
+                    if (smeIptvProduct.value === '베이직' || smeIptvProduct.value === '프리미엄') {
+                        smeIptvWifiGroup.style.display = 'block';
+                    }
+                }
             });
         });
     }
@@ -2035,6 +2085,13 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // 장바구니 표시 초기화
         updateCartDisplay();
+
+        // SME IPTV WIFI 항목 초기 표시 설정
+        const smeIptvProduct = document.getElementById('sme-iptv-product');
+        const smeIptvWifiGroup = document.getElementById('sme-iptv-wifi-group');
+        if (smeIptvProduct.value === '베이직' || smeIptvProduct.value === '프리미엄') {
+            smeIptvWifiGroup.style.display = 'block';
+        }
     }
 
     // SME IPTV 상품 선택 변경 이벤트
