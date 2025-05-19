@@ -1577,9 +1577,12 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             
             let discountHtml = '';
-            discountHtml += safeDiscountText('기본료 할인', internetDisc);
-            discountHtml += safeDiscountText('장비임대료 할인', voipDisc);
+            discountHtml += safeDiscountText('인터넷 할인', internetDisc);
+            discountHtml += safeDiscountText('인터넷전화 할인', voipDisc);
             discountHtml += safeDiscountText('설치비 할인', installDisc);
+            // 디버깅용 로그 추가
+            console.log('discountHtml:', discountHtml);
+            console.log('internetDisc:', internetDisc, 'voipDisc:', voipDisc, 'installDisc:', installDisc);
             
             resultContainer.innerHTML = `
                 <h3><i class="fas fa-chart-line"></i> 요금 계산 결과</h3>
