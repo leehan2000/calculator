@@ -1339,108 +1339,103 @@ document.addEventListener('DOMContentLoaded', function() {
             let totalInternetDiscount = 0;
             let totalVoipDiscount = 0;
             let totalInstallDiscount = 0;
-            if (bundleDiscounts && (Array.isArray(bundleDiscounts) ? bundleDiscounts.length > 0 : Object.keys(bundleDiscounts).length > 0)) {
-                console.log('결합 할인 계산 시작...');
-                console.log('상품 카운트 상태:', productCounts);
-                
-                // 카테고리별로 현재 선택된 상품 리스트 생성 (실제 있는 상품 목록)
-                const selectedProducts = {
-                    'SME': [],
-                    '소호': []
-                };
-                
-                // 선택된 상품과 자유통화 정보를 저장할 객체
-                const selectedFeatures = {
-                    'SME': {},
-                    '소호': {}
-                };
-                
-                // 선택된 상품 리스트 만들기
-                Object.keys(productCounts).forEach(category => {
-                    Object.keys(productCounts[category]).forEach(product => {
-                        if (productCounts[category][product] > 0) {
-                            selectedProducts[category].push(product);
-                            
-                            // 상품별 속성도 추가 (예: 속도별로 구분)
-                            cartItems.forEach(item => {
-                                if (item.category === category && item.product === product) {
-                                    if (item.option) {
-                                        const productWithOption = `${product}_${item.option}`;
-                                        selectedProducts[category].push(productWithOption);
-                                    }
-                                    if (item.subProduct) {
-                                        const productWithSubtype = `${product}_${item.subProduct}`;
-                                        selectedProducts[category].push(productWithSubtype);
-                                    }
-                                    
-                                    // 자유통화 관련 정보 저장
-                                    if (item.feature && item.feature.startsWith('자유통화')) {
-                                        // 예: "자유통화 10" -> 숫자 10 추출
-                                        const featureMatch = item.feature.match(/자유통화\s+(\d+)/);
-                                        if (featureMatch) {
-                                            const featureValue = parseInt(featureMatch[1]);
-                                            if (!selectedFeatures[category][product]) {
-                                                selectedFeatures[category][product] = [];
-                                            }
-                                            selectedFeatures[category][product].push({
-                                                name: '자유통화',
-                                                value: featureValue
-                                            });
-                                            console.log(`자유통화 감지: ${category} - ${product} - ${featureValue}`);
+            let internetLines = 0;
+            let voipLines = 0;
+            // 카테고리별로 현재 선택된 상품 리스트 생성 (실제 있는 상품 목록)
+            const selectedProducts = {
+                'SME': [],
+                '소호': []
+            };
+            // 선택된 상품과 자유통화 정보를 저장할 객체
+            const selectedFeatures = {
+                'SME': {},
+                '소호': {}
+            };
+            // 선택된 상품 리스트 만들기
+            Object.keys(productCounts).forEach(category => {
+                Object.keys(productCounts[category]).forEach(product => {
+                    if (productCounts[category][product] > 0) {
+                        selectedProducts[category].push(product);
+                        cartItems.forEach(item => {
+                            if (item.category === category && item.product === product) {
+                                if (item.option) {
+                                    const productWithOption = `${product}_${item.option}`;
+                                    selectedProducts[category].push(productWithOption);
+                                }
+                                if (item.subProduct) {
+                                    const productWithSubtype = `${product}_${item.subProduct}`;
+                                    selectedProducts[category].push(productWithSubtype);
+                                }
+                                if (item.feature && item.feature.startsWith('자유통화')) {
+                                    const featureMatch = item.feature.match(/자유통화\s+(\d+)/);
+                                    if (featureMatch) {
+                                        const featureValue = parseInt(featureMatch[1]);
+                                        if (!selectedFeatures[category][product]) {
+                                            selectedFeatures[category][product] = [];
                                         }
+                                        selectedFeatures[category][product].push({
+                                            name: '자유통화',
+                                            value: featureValue
+                                        });
                                     }
                                 }
-                            });
-                        }
-                    });
+                            }
+                        });
+                    }
                 });
-                
-                console.log('선택된 상품 목록:', selectedProducts);
-                console.log('선택된 자유통화 정보:', selectedFeatures);
-                
-                // 각 항목별로 적용 가능한 할인 중 가장 큰 값만 적용
-                let maxInternetDiscount = 0;
-                let maxVoipDiscount = 0;
-                let maxInstallDiscount = 0;
-                if (Array.isArray(bundleDiscounts)) {
-                    bundleDiscounts.forEach(discount => {
-                        const { category, productKeys, featureRange, displayName, internetDiscount, voipDiscount, installationDiscount } = discount;
-                        if (selectedProducts[category]) {
-                            const allProductKeysFound = productKeys.every(key => {
-                                if (selectedProducts[category].includes(key)) return true;
-                                return selectedProducts[category].some(selectedProduct => 
-                                    selectedProduct.startsWith(key) || selectedProduct.endsWith(key)
-                                );
-                            });
-                            let featureRangeMatched = true;
-                            if (featureRange && allProductKeysFound) {
-                                featureRangeMatched = false;
-                                Object.keys(selectedFeatures[category]).forEach(product => {
-                                    selectedFeatures[category][product].forEach(feature => {
-                                        if (feature.name === featureRange.feature &&
-                                            feature.value >= featureRange.min && 
-                                            feature.value <= featureRange.max) {
-                                            featureRangeMatched = true;
-                                        }
-                                    });
-                                });
-                            }
-                            if (allProductKeysFound && featureRangeMatched) {
-                                if (internetDiscount > maxInternetDiscount) maxInternetDiscount = internetDiscount;
-                                if (voipDiscount > maxVoipDiscount) maxVoipDiscount = voipDiscount;
-                                if (installationDiscount > maxInstallDiscount) maxInstallDiscount = installationDiscount;
-                            }
-                        }
-                    });
+            });
+            // 회선 수 계산
+            cartItems.forEach(item => {
+                if (item.product === '인터넷') {
+                    internetLines += item.lines || item.quantity || 1;
                 }
-                totalInternetDiscount = maxInternetDiscount;
-                totalVoipDiscount = maxVoipDiscount;
-                totalInstallDiscount = maxInstallDiscount;
-                // 실제 요금에서 차감
-                totalBasicFee -= totalInternetDiscount;
-                totalBasicFee -= totalVoipDiscount;
-                totalInstallationFee -= totalInstallDiscount;
+                if (item.product === '인터넷전화') {
+                    voipLines += item.lines || item.quantity || 1;
+                }
+            });
+            // 할인 최대값 변수 선언
+            let maxInternetDiscount = 0;
+            let maxVoipDiscount = 0;
+            let maxInstallDiscount = 0;
+            if (Array.isArray(bundleDiscounts)) {
+                bundleDiscounts.forEach(discount => {
+                    const { category, productKeys, featureRange, displayName, internetDiscount, voipDiscount, installationDiscount } = discount;
+                    if (selectedProducts[category]) {
+                        const allProductKeysFound = productKeys.every(key => {
+                            if (selectedProducts[category].includes(key)) return true;
+                            return selectedProducts[category].some(selectedProduct => 
+                                selectedProduct.startsWith(key) || selectedProduct.endsWith(key)
+                            );
+                        });
+                        let featureRangeMatched = true;
+                        if (featureRange && allProductKeysFound) {
+                            featureRangeMatched = false;
+                            Object.keys(selectedFeatures[category]).forEach(product => {
+                                selectedFeatures[category][product].forEach(feature => {
+                                    if (feature.name === featureRange.feature &&
+                                        feature.value >= featureRange.min && 
+                                        feature.value <= featureRange.max) {
+                                        featureRangeMatched = true;
+                                    }
+                                });
+                            });
+                        }
+                        if (allProductKeysFound && featureRangeMatched) {
+                            if (internetDiscount > maxInternetDiscount) maxInternetDiscount = internetDiscount;
+                            if (voipDiscount > maxVoipDiscount) maxVoipDiscount = voipDiscount;
+                            if (installationDiscount > maxInstallDiscount) maxInstallDiscount = installationDiscount;
+                        }
+                    }
+                });
             }
+            // 회선 수만큼 곱해서 할인 적용
+            totalInternetDiscount = maxInternetDiscount * internetLines;
+            totalVoipDiscount = maxVoipDiscount * voipLines;
+            totalInstallDiscount = maxInstallDiscount; // 설치비 할인은 1회만 적용
+            // 실제 요금에서 차감
+            totalBasicFee -= totalInternetDiscount;
+            totalBasicFee -= totalVoipDiscount;
+            totalInstallationFee -= totalInstallDiscount;
             
             console.log('계산된 결합 할인:', totalBundleDiscount);
             
