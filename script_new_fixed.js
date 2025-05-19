@@ -1549,15 +1549,17 @@ document.addEventListener('DOMContentLoaded', function() {
             // 할인 금액 안전하게 표시하는 함수
             function safeDiscountText(label, value) {
                 if (typeof value === 'number' && !isNaN(value) && value !== 0) {
-                    return `<span class="discount-detail">${label}: -${Math.abs(value).toLocaleString()}원</span>`;
+                    return `<span class="discount-detail" style="color: red">${label} : -${Math.abs(value).toLocaleString()}원</span>`;
                 }
                 return '';
             }
             
             let discountHtml = '';
-            discountHtml += safeDiscountText('인터넷 할인', totalInternetDiscount);
-            discountHtml += safeDiscountText('인터넷전화 할인', totalVoipDiscount);
-            discountHtml += safeDiscountText('설치비 할인', totalInstallDiscount);
+            const discounts = [];
+            if (totalInternetDiscount) discounts.push(safeDiscountText('인터넷 할인', totalInternetDiscount));
+            if (totalVoipDiscount) discounts.push(safeDiscountText('인터넷전화 할인', totalVoipDiscount));
+            if (totalInstallDiscount) discounts.push(safeDiscountText('설치비 할인', totalInstallDiscount));
+            discountHtml = discounts.join(', ');
             // 디버깅용 로그 추가
             console.log('discountHtml:', discountHtml);
             console.log('totalInternetDiscount:', totalInternetDiscount, 'totalVoipDiscount:', totalVoipDiscount, 'totalInstallDiscount:', totalInstallDiscount);
@@ -1568,10 +1570,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <p><i class="fas fa-hdd"></i> ${deviceFeeDescription} ${deviceDescriptionText}: ${(Math.floor(totalDeviceFee / 10) * 10).toLocaleString()}원</p>
                 <p><i class="fas fa-comments"></i> ${featureFeeDescription}: ${totalSpecialFeatureFee.toLocaleString()}원</p>
                 <p><i class="fas fa-tools"></i> ${installationFeeDescription}: ${totalInstallationFee.toLocaleString()}원</p>
-                ${totalBundleDiscount > 0 ? `
-                    <p><i class="fas fa-percentage"></i> 결합 할인:</p>
-                    ${discountHtml}
-                ` : ''}
+                ${discountHtml}
                 <p class="total-price"><i class="fas fa-check-circle"></i> <strong>월 사용료 (VAT별도): ${finalTotalRounded.toLocaleString()}원</strong></p>
             `;
             
