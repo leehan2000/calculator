@@ -1373,7 +1373,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.log('선택된 상품 목록:', selectedProducts);
                 console.log('선택된 자유통화 정보:', selectedFeatures);
                 
-                // 각 결합할인 룰을 적용
+                // 각 항목별로 적용 가능한 할인 중 가장 큰 값만 적용
+                let maxInternetDiscount = 0;
+                let maxVoipDiscount = 0;
+                let maxInstallDiscount = 0;
                 if (Array.isArray(bundleDiscounts)) {
                     bundleDiscounts.forEach(discount => {
                         const { category, productKeys, featureRange, displayName, internetDiscount, voipDiscount, installationDiscount } = discount;
@@ -1398,18 +1401,20 @@ document.addEventListener('DOMContentLoaded', function() {
                                 });
                             }
                             if (allProductKeysFound && featureRangeMatched) {
-                                // 각 항목별 할인 누적
-                                totalInternetDiscount += internetDiscount;
-                                totalVoipDiscount += voipDiscount;
-                                totalInstallDiscount += installationDiscount;
-                                // 실제 요금에서 차감
-                                totalBasicFee -= internetDiscount;
-                                totalBasicFee -= voipDiscount;
-                                totalInstallationFee -= installationDiscount;
+                                if (internetDiscount > maxInternetDiscount) maxInternetDiscount = internetDiscount;
+                                if (voipDiscount > maxVoipDiscount) maxVoipDiscount = voipDiscount;
+                                if (installationDiscount > maxInstallDiscount) maxInstallDiscount = installationDiscount;
                             }
                         }
                     });
                 }
+                totalInternetDiscount = maxInternetDiscount;
+                totalVoipDiscount = maxVoipDiscount;
+                totalInstallDiscount = maxInstallDiscount;
+                // 실제 요금에서 차감
+                totalBasicFee -= totalInternetDiscount;
+                totalBasicFee -= totalVoipDiscount;
+                totalInstallationFee -= totalInstallDiscount;
             }
             
             console.log('계산된 결합 할인:', totalBundleDiscount);
