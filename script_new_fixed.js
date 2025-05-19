@@ -2036,4 +2036,16 @@ document.addEventListener('DOMContentLoaded', function() {
         // 장바구니 표시 초기화
         updateCartDisplay();
     }
+
+    // SME IPTV 상품 선택 변경 이벤트
+    document.getElementById('sme-iptv-product').addEventListener('change', function() {
+        const wifiGroup = document.getElementById('sme-iptv-wifi-group');
+        const selectedProduct = this.value;
+        
+        if (selectedProduct === '베이직' || selectedProduct === '프리미엄') {
+            wifiGroup.style.display = 'block';
+        } else {
+            wifiGroup.style.display = 'none';
+        }
+    });
 }); 

@@ -119,6 +119,14 @@
                         <option value="단체형 일반형">단체형 일반형</option>
                     </select>
                 </div>
+                <div class="option-group" id="sme-iptv-wifi-group" style="display:none;">
+                    <label><i class="fas fa-wifi"></i> WIFI 선택:</label>
+                    <select id="sme-iptv-wifi">
+                        <option value="없음">없음</option>
+                        <option value="기가WIFI">기가WIFI</option>
+                        <option value="프리미엄WIFI">프리미엄WIFI</option>
+                    </select>
+                </div>
                 <div class="option-group">
                     <label><i class="fas fa-network-wired"></i> 회선 수:</label>
                     <input type="number" id="sme-iptv-lines" min="1" value="1">
@@ -217,7 +225,8 @@
                 <div class="option-group" id="soho-voip-feature-group">
                     <label><i class="fas fa-comments"></i> 자유통화 선택:</label>
                     <select id="soho-voip-feature">
-                        <option value="없음">없음</option>
+                        <option value="없음" selected>없음</option>
+                        <option value="자유통화3">자유통화3</option>
                         <option value="자유통화4">자유통화4</option>
                         <option value="자유통화6">자유통화6</option>
                         <option value="자유통화8">자유통화8</option>
