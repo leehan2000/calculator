@@ -1311,7 +1311,9 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log('상품 카운트:', productCounts);
             
             // 결합 할인 계산
-            // 업로드된 엑셀에서 가져온 bundleDiscounts가 있으면 사용
+            let totalInternetDiscount = 0;
+            let totalVoipDiscount = 0;
+            let totalInstallDiscount = 0;
             if (bundleDiscounts && (Array.isArray(bundleDiscounts) ? bundleDiscounts.length > 0 : Object.keys(bundleDiscounts).length > 0)) {
                 console.log('결합 할인 계산 시작...');
                 console.log('상품 카운트 상태:', productCounts);
@@ -1373,60 +1375,36 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 // 각 결합할인 룰을 적용
                 if (Array.isArray(bundleDiscounts)) {
-                    // 배열 형태의 bundleDiscounts 처리
                     bundleDiscounts.forEach(discount => {
                         const { category, productKeys, featureRange, displayName, internetDiscount, voipDiscount, installationDiscount } = discount;
-                        
-                        console.log(`할인 규칙 확인 중: ${category} - ${displayName}`);
-                        console.log(`- 상품 키: ${productKeys.join(', ')}`);
-                        if (featureRange) {
-                            console.log(`- 자유통화 범위: ${featureRange.min} ~ ${featureRange.max}`);
-                        }
-                        
-                        // 카테고리가 있는지 확인
                         if (selectedProducts[category]) {
-                            // 해당 카테고리에서 모든 키가 존재하는지 확인
                             const allProductKeysFound = productKeys.every(key => {
-                                // 간단한 키 (예: '인터넷')
-                                if (selectedProducts[category].includes(key)) {
-                                    return true;
-                                }
-                                
-                                // 복합 키 (예: '인터넷_100M') - 부분 매칭 시도
+                                if (selectedProducts[category].includes(key)) return true;
                                 return selectedProducts[category].some(selectedProduct => 
                                     selectedProduct.startsWith(key) || selectedProduct.endsWith(key)
                                 );
                             });
-                            
-                            // 자유통화 범위 확인
                             let featureRangeMatched = true;
                             if (featureRange && allProductKeysFound) {
-                                // 자유통화 범위가 지정된 경우, 범위에 맞는지 확인
                                 featureRangeMatched = false;
-                                
-                                // 카테고리의 모든 상품에 대해 자유통화 범위 확인
                                 Object.keys(selectedFeatures[category]).forEach(product => {
                                     selectedFeatures[category][product].forEach(feature => {
                                         if (feature.name === featureRange.feature &&
                                             feature.value >= featureRange.min && 
                                             feature.value <= featureRange.max) {
                                             featureRangeMatched = true;
-                                            console.log(`자유통화 범위 매칭됨: ${feature.value} (${featureRange.min}~${featureRange.max})`);
                                         }
                                     });
                                 });
                             }
-                            
                             if (allProductKeysFound && featureRangeMatched) {
-                                console.log(`할인 적용: ${displayName}`);
-                                console.log(`- 인터넷 할인: ${internetDiscount}원`);
-                                console.log(`- 인터넷전화 할인: ${voipDiscount}원`);
-                                console.log(`- 설치비 할인: ${installationDiscount}원`);
-                                
-                                // 각 항목별 할인 적용
+                                // 각 항목별 할인 누적
+                                totalInternetDiscount += internetDiscount;
+                                totalVoipDiscount += voipDiscount;
+                                totalInstallDiscount += installationDiscount;
+                                // 실제 요금에서 차감
                                 totalBasicFee -= internetDiscount;
-                                // totalDeviceFee -= voipDiscount; // 기존: 장비임대료에서 차감
-                                totalBasicFee -= voipDiscount; // 수정: 기본료에서 차감
+                                totalBasicFee -= voipDiscount;
                                 totalInstallationFee -= installationDiscount;
                             }
                         }
@@ -1577,12 +1555,12 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             
             let discountHtml = '';
-            discountHtml += safeDiscountText('인터넷 할인', internetDisc);
-            discountHtml += safeDiscountText('인터넷전화 할인', voipDisc);
-            discountHtml += safeDiscountText('설치비 할인', installDisc);
+            discountHtml += safeDiscountText('인터넷 할인', totalInternetDiscount);
+            discountHtml += safeDiscountText('인터넷전화 할인', totalVoipDiscount);
+            discountHtml += safeDiscountText('설치비 할인', totalInstallDiscount);
             // 디버깅용 로그 추가
             console.log('discountHtml:', discountHtml);
-            console.log('internetDisc:', internetDisc, 'voipDisc:', voipDisc, 'installDisc:', installDisc);
+            console.log('totalInternetDiscount:', totalInternetDiscount, 'totalVoipDiscount:', totalVoipDiscount, 'totalInstallDiscount:', totalInstallDiscount);
             
             resultContainer.innerHTML = `
                 <h3><i class="fas fa-chart-line"></i> 요금 계산 결과</h3>
