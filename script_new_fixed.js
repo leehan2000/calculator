@@ -1598,7 +1598,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <p><i class="fas fa-comments"></i> ${featureFeeDescription}: ${totalSpecialFeatureFee.toLocaleString()}원</p>
                 <p><i class="fas fa-tools"></i> ${installationFeeDescription}: ${totalInstallationFee.toLocaleString()}원</p>
                 ${discountHtml}
-                <p class="total-price"><i class="fas fa-check-circle"></i> <strong>월 사용료 (VAT별도): ${finalTotalRounded.toLocaleString()}원 (VAT포함: ${vatIncluded.toLocaleString()}원)</strong></p>
+                <p class="total-price"><i class="fas fa-check-circle"></i> <strong>월 사용료 (VAT별도): ${finalTotalRounded.toLocaleString()}원 <span class="vat-included">(VAT포함: ${vatIncluded.toLocaleString()}원)</span></strong></p>
             `;
             
             // 결과에 애니메이션 효과 추가

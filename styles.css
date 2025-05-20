@@ -710,4 +710,11 @@ button:active::after {
   h3, h4 {
     font-size: 1.1rem !important;
   }
+}
+
+.vat-included {
+  font-size: 0.95em;
+  color: #e74c3c;
+  font-weight: 600;
+  margin-left: 6px;
 } 
