@@ -437,7 +437,8 @@ document.addEventListener('DOMContentLoaded', function() {
                             // 1) 카테고리
                             const category = row.getCell(1).value || 'SME';
                             // 2) 결합유형 처리: 언더바(_)로 분리
-                            const bundleType = row.getCell(2).value;
+                            const bundleType = row.getCell(2).text;
+                            // '_'로 분리
                             const parts = bundleType ? bundleType.split('_') : [];
                             // 상품키 및 자유통화 범위 분리
                             const productKeys = [];
@@ -461,28 +462,33 @@ document.addEventListener('DOMContentLoaded', function() {
                             const internetDiscount     = Number(row.getCell(5).value) || 0;
                             const voipDiscount         = Number(row.getCell(6).value) || 0;
                             const installationDiscount = Number(row.getCell(7).value) || 0;
-                            if (bundleType) {
-                                const discountItem = { 
-                                    category, 
-                                    productKeys,    
-                                    featureRange,   
-                                    displayName,
-                                    internetDiscount,
-                                    voipDiscount,
-                                    installationDiscount
-                                };
-                                bundleDiscounts.push(discountItem);
-                                console.log(`결합할인: ${category} - ${bundleType} - ${displayName}`);
-                                console.log(`- 인터넷 할인: ${internetDiscount}원`);
-                                console.log(`- 인터넷전화 할인: ${voipDiscount}원`);
-                                console.log(`- 설치비 할인: ${installationDiscount}원`);
-                                if (featureRange) {
-                                    console.log(`자유통화 범위: ${featureRange.min} ~ ${featureRange.max}`);
-                                }
+                            // ❗️ productKeys가 빈 배열이면 이 행 건너뜀
+                            if (!Array.isArray(productKeys) || productKeys.length === 0) {
+                                console.log('빈 결합할인 행 건너뜀:', displayName);
+                                return;
+                            }
+                            const discountItem = { 
+                                category, 
+                                productKeys,    
+                                featureRange,   
+                                displayName,
+                                internetDiscount,
+                                voipDiscount,
+                                installationDiscount
+                            };
+                            bundleDiscounts.push(discountItem);
+                            console.log(`결합할인: ${category} - ${bundleType} - ${displayName}`);
+                            console.log(`- 인터넷 할인: ${internetDiscount}원`);
+                            console.log(`- 인터넷전화 할인: ${voipDiscount}원`);
+                            console.log(`- 설치비 할인: ${installationDiscount}원`);
+                            if (featureRange) {
+                                console.log(`자유통화 범위: ${featureRange.min} ~ ${featureRange.max}`);
                             }
                         }
                     });
                     console.log('결합할인 데이터(배열):', bundleDiscounts);
+                    // 혹은 전체 읽은 뒤 추가로 한 번 더 필터링
+                    bundleDiscounts = bundleDiscounts.filter(d => Array.isArray(d.productKeys) && d.productKeys.length > 0);
                 } else {
                     console.warn('결합할인 시트를 찾을 수 없습니다.');
                 }
@@ -1399,6 +1405,8 @@ document.addEventListener('DOMContentLoaded', function() {
             let maxInstallDiscount = 0;
             if (Array.isArray(bundleDiscounts)) {
                 bundleDiscounts.forEach(discount => {
+                    // 빈 productKeys 규칙은 계산에서 제외
+                    if (!Array.isArray(discount.productKeys) || discount.productKeys.length === 0) return;
                     const { category, productKeys, featureRange, displayName, internetDiscount, voipDiscount, installationDiscount } = discount;
                     if (selectedProducts[category]) {
                         const allProductKeysFound = productKeys.every(key => {

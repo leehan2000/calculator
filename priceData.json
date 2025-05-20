@@ -667,6 +667,68 @@
       "category": "소호",
       "productKeys": [
         "500M",
+        "IPTV",
+        "AI전화"
+      ],
+      "featureRange": null,
+      "displayName": {
+        "richText": [
+          {
+            "text": "인터넷+"
+          },
+          {
+            "font": {
+              "size": 11,
+              "color": {
+                "argb": "FF000000"
+              },
+              "name": "맑은 고딕",
+              "family": 3,
+              "charset": 129
+            },
+            "text": "IPTV+AI전화"
+          }
+        ]
+      },
+      "internetDiscount": 5000,
+      "voipDiscount": 0,
+      "installationDiscount": 2000
+    },
+    {
+      "category": "소호",
+      "productKeys": [
+        "500M",
+        "IPTV",
+        "인터넷전화"
+      ],
+      "featureRange": null,
+      "displayName": {
+        "richText": [
+          {
+            "text": "인터넷+"
+          },
+          {
+            "font": {
+              "size": 11,
+              "color": {
+                "argb": "FF000000"
+              },
+              "name": "맑은 고딕",
+              "family": 3,
+              "charset": 129
+            },
+            "text": "IPTV+인터넷전화"
+          }
+        ]
+      },
+      "internetDiscount": 5000,
+      "voipDiscount": 0,
+      "installationDiscount": 2000
+    },
+    {
+      "category": "소호",
+      "productKeys": [
+        "500M",
         "인터넷전화",
         "일반형"
       ],
@@ -684,7 +746,7 @@
       ],
       "featureRange": null,
       "displayName": "인터넷+AI전화",
-      "internetDiscount": 5000,
+      "internetDiscount": 3000,
       "voipDiscount": 0,
       "installationDiscount": 0
     },
@@ -755,6 +817,68 @@
       "category": "소호",
       "productKeys": [
         "1G",
+        "IPTV",
+        "AI전화"
+      ],
+      "featureRange": null,
+      "displayName": {
+        "richText": [
+          {
+            "text": "인터넷+"
+          },
+          {
+            "font": {
+              "size": 11,
+              "color": {
+                "argb": "FF000000"
+              },
+              "name": "맑은 고딕",
+              "family": 3,
+              "charset": 129
+            },
+            "text": "IPTV+AI전화"
+          }
+        ]
+      },
+      "internetDiscount": 5000,
+      "voipDiscount": 0,
+      "installationDiscount": 2000
+    },
+    {
+      "category": "소호",
+      "productKeys": [
+        "1G",
+        "IPTV",
+        "인터넷전화"
+      ],
+      "featureRange": null,
+      "displayName": {
+        "richText": [
+          {
+            "text": "인터넷+"
+          },
+          {
+            "font": {
+              "size": 11,
+              "color": {
+                "argb": "FF000000"
+              },
+              "name": "맑은 고딕",
+              "family": 3,
+              "charset": 129
+            },
+            "text": "IPTV+인터넷전화"
+          }
+        ]
+      },
+      "internetDiscount": 5000,
+      "voipDiscount": 0,
+      "installationDiscount": 2000
+    },
+    {
+      "category": "소호",
+      "productKeys": [
+        "1G",
         "인터넷전화",
         "일반형"
       ],
@@ -772,7 +896,7 @@
       ],
       "featureRange": null,
       "displayName": "인터넷+AI전화",
-      "internetDiscount": 5000,
+      "internetDiscount": 3000,
       "voipDiscount": 0,
       "installationDiscount": 0
     },
@@ -796,6 +920,90 @@
       ],
       "featureRange": null,
       "displayName": "프리미엄+인터넷전화",
+      "internetDiscount": 10000,
+      "voipDiscount": 0,
+      "installationDiscount": 0
+    },
+    {
+      "category": "소호",
+      "productKeys": [
+        "베이직",
+        "AI전화"
+      ],
+      "featureRange": null,
+      "displayName": {
+        "richText": [
+          {
+            "text": "베이직+"
+          },
+          {
+            "font": {
+              "size": 11,
+              "color": {
+                "argb": "FF000000"
+              },
+              "name": "맑은 고딕",
+              "family": 3,
+              "charset": 129
+            },
+            "text": "AI"
+          },
+          {
+            "font": {
+              "size": 11,
+              "color": {
+                "argb": "FF000000"
+              },
+              "name": "맑은 고딕",
+              "family": 3,
+              "charset": 129
+            },
+            "text": "전화"
+          }
+        ]
+      },
+      "internetDiscount": 7500,
+      "voipDiscount": 0,
+      "installationDiscount": 0
+    },
+    {
+      "category": "소호",
+      "productKeys": [
+        "프리미엄",
+        "AI전화"
+      ],
+      "featureRange": null,
+      "displayName": {
+        "richText": [
+          {
+            "text": "프리미엄+"
+          },
+          {
+            "font": {
+              "size": 11,
+              "color": {
+                "argb": "FF000000"
+              },
+              "name": "맑은 고딕",
+              "family": 3,
+              "charset": 129
+            },
+            "text": "AI"
+          },
+          {
+            "font": {
+              "size": 11,
+              "color": {
+                "argb": "FF000000"
+              },
+              "name": "맑은 고딕",
+              "family": 3,
+              "charset": 129
+            },
+            "text": "전화"
+          }
+        ]
+      },
       "internetDiscount": 10000,
       "voipDiscount": 0,
       "installationDiscount": 0
