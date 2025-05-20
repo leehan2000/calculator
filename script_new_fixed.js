@@ -1443,6 +1443,8 @@ document.addEventListener('DOMContentLoaded', function() {
             const finalTotal = totalBasicFee + totalDeviceFee + totalSpecialFeatureFee - totalBundleDiscount;
             const finalTotalRounded = Math.floor(finalTotal / 10) * 10; // 원 단위 절사
             const totalWithInstallation = finalTotal + totalInstallationFee; // 내부 계산용으로만 사용
+            // VAT 포함 금액 계산
+            const vatIncluded = Math.round(finalTotalRounded * 1.1);
             console.log('월 사용료(설치비 제외):', finalTotal);
             console.log('월 사용료(원 단위 절사):', finalTotalRounded);
             console.log('총 금액(설치비 포함):', totalWithInstallation);
@@ -1527,7 +1529,11 @@ document.addEventListener('DOMContentLoaded', function() {
                                 price = price * (1 - discount.value / 100);
                             }
                         }
-                        description = `전화기 할부금 ${Math.floor(price).toLocaleString()}원 x ${count}대`;
+                        if (price === 0) {
+                            description = '전화기 무상 임대';
+                        } else {
+                            description = `전화기 할부금 ${Math.floor(price).toLocaleString()}원 x ${count}대`;
+                        }
                     }
                     if (description) {
                         deviceDescriptions.push(description);
@@ -1592,7 +1598,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <p><i class="fas fa-comments"></i> ${featureFeeDescription}: ${totalSpecialFeatureFee.toLocaleString()}원</p>
                 <p><i class="fas fa-tools"></i> ${installationFeeDescription}: ${totalInstallationFee.toLocaleString()}원</p>
                 ${discountHtml}
-                <p class="total-price"><i class="fas fa-check-circle"></i> <strong>월 사용료 (VAT별도): ${finalTotalRounded.toLocaleString()}원</strong></p>
+                <p class="total-price"><i class="fas fa-check-circle"></i> <strong>월 사용료 (VAT별도): ${finalTotalRounded.toLocaleString()}원 (VAT포함: ${vatIncluded.toLocaleString()}원)</strong></p>
             `;
             
             // 결과에 애니메이션 효과 추가

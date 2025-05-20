@@ -679,4 +679,35 @@ button:active::after {
         margin-top: 5px;
         font-weight: 600;
     }
+}
+
+/* =========================
+   모바일 반응형 버튼 스타일
+   ========================= */
+@media (max-width: 600px) {
+  button,
+  #calculate-button,
+  #reset-button {
+    font-size: 1rem !important;
+    padding: 0.5em 1em !important;
+    height: 2.5em !important;
+    min-width: 120px !important;
+    border-radius: 8px !important;
+  }
+  .tab-button, .product-tab {
+    font-size: 0.95rem !important;
+    padding: 0.4em 0.8em !important;
+    min-width: 80px !important;
+    height: 2.2em !important;
+  }
+  .cart-item {
+    font-size: 0.95rem !important;
+    padding: 0.5em 0.7em !important;
+  }
+  .total-price {
+    font-size: 1.1rem !important;
+  }
+  h3, h4 {
+    font-size: 1.1rem !important;
+  }
 } 
