@@ -1499,6 +1499,7 @@ document.addEventListener('DOMContentLoaded', function() {
             cartItems.forEach(item => {
                 if (item.device) {
                     let description = '';
+                    let count = item.lines || item.quantity || 1;
                     if (item.device.includes('UHD')) {
                         description = `UHD 임대비 ${deviceBundledPrices[item.device]?.toLocaleString() || deviceStandalonePrices[item.device]?.toLocaleString() || '0'}원`;
                     } else if (item.device.includes('가온')) {
@@ -1526,7 +1527,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                 price = price * (1 - discount.value / 100);
                             }
                         }
-                        description = `전화기 할부금 ${Math.floor(price).toLocaleString()}원`;
+                        description = `전화기 할부금 ${Math.floor(price).toLocaleString()}원 x ${count}대`;
                     }
                     if (description) {
                         deviceDescriptions.push(description);
