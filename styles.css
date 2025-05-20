@@ -714,7 +714,7 @@ button:active::after {
 
 .vat-included {
   font-size: 0.95em;
-  color: #e74c3c;
+  color: #222;
   font-weight: 600;
   margin-left: 6px;
 } 
