@@ -199,7 +199,7 @@ function App() {
               </h3>
               <div className="mt-4 space-y-2">
                 <p className="text-base text-gray-500">
-                  고객센터: 1577-0000
+                  고객센터: 02-6951-1156
                 </p>
                 <p className="text-sm text-gray-500">
                   운영시간: 평일 09:00 - 18:00
