@@ -294,723 +294,228 @@
   "bundleDiscounts": [
     {
       "category": "SME",
-      "productKeys": [
-        "100M",
-        "인터넷전화"
-      ],
-      "featureRange": null,
+      "bundleType": "100M_인터넷전화",
       "displayName": "인터넷+인터넷전화",
+      "discountRate": 0,
       "internetDiscount": 3000,
       "voipDiscount": 0,
       "installationDiscount": 0
     },
     {
       "category": "SME",
-      "productKeys": [
-        "100M",
-        "IPTV"
-      ],
-      "featureRange": null,
+      "bundleType": "100M_IPTV",
       "displayName": "인터넷+IPTV",
+      "discountRate": 0,
       "internetDiscount": 3000,
       "voipDiscount": 0,
       "installationDiscount": 0
     },
     {
       "category": "SME",
-      "productKeys": [
-        "100M",
-        "지능형CCTV"
-      ],
-      "featureRange": null,
+      "bundleType": "100M_지능형CCTV",
       "displayName": "인터넷+지능형CCTV",
+      "discountRate": 0,
       "internetDiscount": 3000,
       "voipDiscount": 0,
       "installationDiscount": 0
     },
     {
       "category": "SME",
-      "productKeys": [
-        "100M",
-        "인터넷전화",
-        "DCS",
-        "종량제"
-      ],
-      "featureRange": null,
+      "bundleType": "100M_지능형CCTV_인터넷전화",
+      "displayName": "TPS",
+      "discountRate": 0,
+      "internetDiscount": 0,
+      "voipDiscount": 1000,
+      "installationDiscount": 0
+    },
+    {
+      "category": "SME",
+      "bundleType": "100M_지능형CCTV_IPTV",
+      "displayName": "TPS",
+      "discountRate": 0,
+      "internetDiscount": 6000,
+      "voipDiscount": 0,
+      "installationDiscount": 0
+    },
+    {
+      "category": "SME",
+      "bundleType": "100M_인터넷전화_DCS종량제",
       "displayName": "인터넷+DCS종량제",
+      "discountRate": 0,
       "internetDiscount": 0,
       "voipDiscount": 1000,
       "installationDiscount": 0
     },
     {
       "category": "SME",
-      "productKeys": [
-        "100M",
-        "인터넷전화",
-        "고급형DCS",
-        "종량제"
-      ],
-      "featureRange": null,
+      "bundleType": "100M_인터넷전화_고급형DCS종량제",
       "displayName": "인터넷+고급형DCS종량제",
+      "discountRate": 0,
       "internetDiscount": 0,
       "voipDiscount": 1000,
       "installationDiscount": 0
     },
     {
       "category": "SME",
-      "productKeys": [
-        "100M",
-        "인터넷전화",
-        "일반형"
-      ],
-      "featureRange": null,
+      "bundleType": "100M_인터넷전화_일반형",
       "displayName": "인터넷+일반형",
+      "discountRate": 0,
       "internetDiscount": 0,
       "voipDiscount": 1000,
       "installationDiscount": 0
     },
     {
       "category": "SME",
-      "productKeys": [
-        "500M",
-        "인터넷전화"
-      ],
-      "featureRange": null,
+      "bundleType": "500M_인터넷전화",
       "displayName": "인터넷+인터넷전화",
+      "discountRate": 0,
       "internetDiscount": 5000,
       "voipDiscount": 0,
       "installationDiscount": 0
     },
     {
       "category": "SME",
-      "productKeys": [
-        "500M",
-        "IPTV"
-      ],
-      "featureRange": null,
+      "bundleType": "500M_IPTV",
       "displayName": "인터넷+IPTV",
+      "discountRate": 0,
       "internetDiscount": 5000,
       "voipDiscount": 0,
       "installationDiscount": 0
     },
     {
       "category": "SME",
-      "productKeys": [
-        "500M",
-        "지능형CCTV"
-      ],
-      "featureRange": null,
+      "bundleType": "500M_지능형CCTV",
       "displayName": "인터넷+지능형CCTV",
+      "discountRate": 0,
       "internetDiscount": 5000,
       "voipDiscount": 0,
       "installationDiscount": 0
     },
     {
       "category": "SME",
-      "productKeys": [
-        "500M",
-        "지능형CCTV",
-        "인터넷전화"
-      ],
-      "featureRange": null,
+      "bundleType": "500M_지능형CCTV_인터넷전화",
       "displayName": "TPS",
+      "discountRate": 0,
       "internetDiscount": 6000,
       "voipDiscount": 0,
       "installationDiscount": 0
     },
     {
       "category": "SME",
-      "productKeys": [
-        "500M",
-        "지능형CCTV",
-        "IPTV"
-      ],
-      "featureRange": null,
+      "bundleType": "500M_지능형CCTV_IPTV",
       "displayName": "TPS",
+      "discountRate": 0,
       "internetDiscount": 6000,
       "voipDiscount": 0,
       "installationDiscount": 0
     },
     {
       "category": "SME",
-      "productKeys": [
-        "500M",
-        "인터넷전화",
-        "DCS",
-        "종량제"
-      ],
-      "featureRange": null,
+      "bundleType": "500M_인터넷전화_DCS종량제",
       "displayName": "인터넷+DCS종량제",
+      "discountRate": 0,
       "internetDiscount": 0,
       "voipDiscount": 1000,
       "installationDiscount": 0
     },
     {
       "category": "SME",
-      "productKeys": [
-        "500M",
-        "인터넷전화",
-        "고급형DCS",
-        "종량제"
-      ],
-      "featureRange": null,
+      "bundleType": "500M_인터넷전화_고급형DCS종량제",
       "displayName": "인터넷+고급형DCS종량제",
+      "discountRate": 0,
       "internetDiscount": 0,
       "voipDiscount": 1000,
       "installationDiscount": 0
     },
     {
       "category": "SME",
-      "productKeys": [
-        "500M",
-        "인터넷전화",
-        "일반형"
-      ],
-      "featureRange": null,
+      "bundleType": "500M_인터넷전화_일반형",
       "displayName": "인터넷+일반형",
+      "discountRate": 0,
       "internetDiscount": 0,
       "voipDiscount": 1000,
       "installationDiscount": 0
     },
     {
-      "category": "SME",
-      "productKeys": [
-        "1G",
-        "인터넷전화"
-      ],
-      "featureRange": null,
+      "category": "소호",
+      "bundleType": "100M_인터넷전화",
       "displayName": "인터넷+인터넷전화",
-      "internetDiscount": 5000,
+      "discountRate": 0,
+      "internetDiscount": 3000,
       "voipDiscount": 0,
       "installationDiscount": 0
     },
     {
-      "category": "SME",
-      "productKeys": [
-        "1G",
-        "IPTV"
-      ],
-      "featureRange": null,
+      "category": "소호",
+      "bundleType": "100M_IPTV",
       "displayName": "인터넷+IPTV",
+      "discountRate": 0,
+      "internetDiscount": 3000,
+      "voipDiscount": 0,
+      "installationDiscount": 2000
+    },
+    {
+      "category": "소호",
+      "bundleType": "500M_인터넷전화",
+      "displayName": "인터넷+인터넷전화",
+      "discountRate": 0,
       "internetDiscount": 5000,
       "voipDiscount": 0,
       "installationDiscount": 0
     },
     {
-      "category": "SME",
-      "productKeys": [
-        "1G",
-        "지능형CCTV"
-      ],
-      "featureRange": null,
+      "category": "소호",
+      "bundleType": "500M_IPTV",
+      "displayName": "인터넷+IPTV",
+      "discountRate": 0,
+      "internetDiscount": 5000,
+      "voipDiscount": 0,
+      "installationDiscount": 2000
+    },
+    {
+      "category": "소호",
+      "bundleType": "500M_지능형CCTV",
       "displayName": "인터넷+지능형CCTV",
-      "internetDiscount": 5000,
-      "voipDiscount": 0,
-      "installationDiscount": 0
-    },
-    {
-      "category": "SME",
-      "productKeys": [
-        "1G",
-        "지능형CCTV",
-        "인터넷전화"
-      ],
-      "featureRange": null,
-      "displayName": "TPS",
-      "internetDiscount": 7000,
-      "voipDiscount": 0,
-      "installationDiscount": 0
-    },
-    {
-      "category": "SME",
-      "productKeys": [
-        "1G",
-        "지능형CCTV",
-        "IPTV"
-      ],
-      "featureRange": null,
-      "displayName": "TPS",
-      "internetDiscount": 7000,
-      "voipDiscount": 0,
-      "installationDiscount": 0
-    },
-    {
-      "category": "SME",
-      "productKeys": [
-        "1G",
-        "인터넷전화",
-        "DCS",
-        "종량제"
-      ],
-      "featureRange": null,
-      "displayName": "인터넷+DCS종량제",
-      "internetDiscount": 0,
-      "voipDiscount": 1000,
-      "installationDiscount": 0
-    },
-    {
-      "category": "SME",
-      "productKeys": [
-        "1G",
-        "인터넷전화",
-        "고급형DCS",
-        "종량제"
-      ],
-      "featureRange": null,
-      "displayName": "인터넷+고급형DCS종량제",
-      "internetDiscount": 0,
-      "voipDiscount": 1000,
-      "installationDiscount": 0
-    },
-    {
-      "category": "SME",
-      "productKeys": [
-        "1G",
-        "인터넷전화",
-        "일반형"
-      ],
-      "featureRange": null,
-      "displayName": "인터넷+일반형",
-      "internetDiscount": 0,
-      "voipDiscount": 1000,
-      "installationDiscount": 0
-    },
-    {
-      "category": "소호",
-      "productKeys": [
-        "100M",
-        "인터넷전화",
-        "일반형"
-      ],
-      "featureRange": null,
-      "displayName": "인터넷+일반형",
-      "internetDiscount": 0,
-      "voipDiscount": 1000,
-      "installationDiscount": 0
-    },
-    {
-      "category": "소호",
-      "productKeys": [
-        "100M",
-        "IPTV"
-      ],
-      "featureRange": null,
-      "displayName": "인터넷+IPTV",
-      "internetDiscount": 0,
-      "voipDiscount": 0,
-      "installationDiscount": 2000
-    },
-    {
-      "category": "소호",
-      "productKeys": [
-        "500M",
-        "IPTV"
-      ],
-      "featureRange": null,
-      "displayName": "인터넷+IPTV",
-      "internetDiscount": 5000,
-      "voipDiscount": 0,
-      "installationDiscount": 2000
-    },
-    {
-      "category": "소호",
-      "productKeys": [
-        "500M",
-        "지능형CCTV"
-      ],
-      "featureRange": null,
-      "displayName": "인터넷+지능형CCTV",
+      "discountRate": 0,
       "internetDiscount": 5000,
       "voipDiscount": 0,
       "installationDiscount": 0
     },
     {
       "category": "소호",
-      "productKeys": [
-        "500M",
-        "지능형CCTV",
-        "인터넷전화"
-      ],
-      "featureRange": null,
+      "bundleType": "500M_지능형CCTV_인터넷전화",
       "displayName": "TPS",
+      "discountRate": 0,
       "internetDiscount": 6000,
       "voipDiscount": 0,
       "installationDiscount": 0
     },
     {
       "category": "소호",
-      "productKeys": [
-        "500M",
-        "지능형CCTV",
-        "IPTV"
-      ],
-      "featureRange": null,
+      "bundleType": "500M_지능형CCTV_IPTV",
       "displayName": "TPS",
-      "internetDiscount": 6000,
-      "voipDiscount": 0,
-      "installationDiscount": 2000
-    },
-    {
-      "category": "소호",
-      "productKeys": [
-        "500M",
-        "지능형CCTV",
-        "AI전화"
-      ],
-      "featureRange": null,
-      "displayName": "TPS",
+      "discountRate": 0,
       "internetDiscount": 6000,
       "voipDiscount": 0,
       "installationDiscount": 0
     },
     {
       "category": "소호",
-      "productKeys": [
-        "500M",
-        "IPTV",
-        "AI전화"
-      ],
-      "featureRange": null,
-      "displayName": {
-        "richText": [
-          {
-            "text": "인터넷+"
-          },
-          {
-            "font": {
-              "size": 11,
-              "color": {
-                "argb": "FF000000"
-              },
-              "name": "맑은 고딕",
-              "family": 3,
-              "charset": 129
-            },
-            "text": "IPTV+AI전화"
-          }
-        ]
-      },
-      "internetDiscount": 5000,
-      "voipDiscount": 0,
-      "installationDiscount": 2000
-    },
-    {
-      "category": "소호",
-      "productKeys": [
-        "500M",
-        "IPTV",
-        "인터넷전화"
-      ],
-      "featureRange": null,
-      "displayName": {
-        "richText": [
-          {
-            "text": "인터넷+"
-          },
-          {
-            "font": {
-              "size": 11,
-              "color": {
-                "argb": "FF000000"
-              },
-              "name": "맑은 고딕",
-              "family": 3,
-              "charset": 129
-            },
-            "text": "IPTV+인터넷전화"
-          }
-        ]
-      },
-      "internetDiscount": 5000,
-      "voipDiscount": 0,
-      "installationDiscount": 2000
-    },
-    {
-      "category": "소호",
-      "productKeys": [
-        "500M",
-        "인터넷전화",
-        "일반형"
-      ],
-      "featureRange": null,
-      "displayName": "인터넷+일반형",
-      "internetDiscount": 0,
-      "voipDiscount": 1000,
-      "installationDiscount": 0
-    },
-    {
-      "category": "소호",
-      "productKeys": [
-        "500M",
-        "AI전화"
-      ],
-      "featureRange": null,
+      "bundleType": "500M_AI전화",
       "displayName": "인터넷+AI전화",
+      "discountRate": 0,
       "internetDiscount": 3000,
       "voipDiscount": 0,
       "installationDiscount": 0
     },
     {
       "category": "소호",
-      "productKeys": [
-        "1G",
-        "IPTV"
-      ],
-      "featureRange": null,
-      "displayName": "인터넷+IPTV",
+      "bundleType": "500M_IPTV_AI전화",
+      "displayName": "인터넷+IPTV+AI전화",
+      "discountRate": 0,
       "internetDiscount": 5000,
       "voipDiscount": 0,
       "installationDiscount": 2000
-    },
-    {
-      "category": "소호",
-      "productKeys": [
-        "1G",
-        "CCTV"
-      ],
-      "featureRange": null,
-      "displayName": "인터넷+CCTV",
-      "internetDiscount": 5000,
-      "voipDiscount": 0,
-      "installationDiscount": 0
-    },
-    {
-      "category": "소호",
-      "productKeys": [
-        "1G",
-        "지능형CCTV",
-        "인터넷전화"
-      ],
-      "featureRange": null,
-      "displayName": "TPS",
-      "internetDiscount": 8000,
-      "voipDiscount": 0,
-      "installationDiscount": 0
-    },
-    {
-      "category": "소호",
-      "productKeys": [
-        "1G",
-        "지능형CCTV",
-        "IPTV"
-      ],
-      "featureRange": null,
-      "displayName": "TPS",
-      "internetDiscount": 8000,
-      "voipDiscount": 0,
-      "installationDiscount": 2000
-    },
-    {
-      "category": "소호",
-      "productKeys": [
-        "1G",
-        "지능형CCTV",
-        "AI전화"
-      ],
-      "featureRange": null,
-      "displayName": "TPS",
-      "internetDiscount": 8000,
-      "voipDiscount": 0,
-      "installationDiscount": 0
-    },
-    {
-      "category": "소호",
-      "productKeys": [
-        "1G",
-        "IPTV",
-        "AI전화"
-      ],
-      "featureRange": null,
-      "displayName": {
-        "richText": [
-          {
-            "text": "인터넷+"
-          },
-          {
-            "font": {
-              "size": 11,
-              "color": {
-                "argb": "FF000000"
-              },
-              "name": "맑은 고딕",
-              "family": 3,
-              "charset": 129
-            },
-            "text": "IPTV+AI전화"
-          }
-        ]
-      },
-      "internetDiscount": 5000,
-      "voipDiscount": 0,
-      "installationDiscount": 2000
-    },
-    {
-      "category": "소호",
-      "productKeys": [
-        "1G",
-        "IPTV",
-        "인터넷전화"
-      ],
-      "featureRange": null,
-      "displayName": {
-        "richText": [
-          {
-            "text": "인터넷+"
-          },
-          {
-            "font": {
-              "size": 11,
-              "color": {
-                "argb": "FF000000"
-              },
-              "name": "맑은 고딕",
-              "family": 3,
-              "charset": 129
-            },
-            "text": "IPTV+인터넷전화"
-          }
-        ]
-      },
-      "internetDiscount": 5000,
-      "voipDiscount": 0,
-      "installationDiscount": 2000
-    },
-    {
-      "category": "소호",
-      "productKeys": [
-        "1G",
-        "인터넷전화",
-        "일반형"
-      ],
-      "featureRange": null,
-      "displayName": "인터넷+일반형",
-      "internetDiscount": 0,
-      "voipDiscount": 1000,
-      "installationDiscount": 0
-    },
-    {
-      "category": "소호",
-      "productKeys": [
-        "1G",
-        "AI전화"
-      ],
-      "featureRange": null,
-      "displayName": "인터넷+AI전화",
-      "internetDiscount": 3000,
-      "voipDiscount": 0,
-      "installationDiscount": 0
-    },
-    {
-      "category": "소호",
-      "productKeys": [
-        "무선인터넷",
-        "베이직",
-        "인터넷전화"
-      ],
-      "featureRange": null,
-      "displayName": "베이직+인터넷전화",
-      "internetDiscount": 7500,
-      "voipDiscount": 0,
-      "installationDiscount": 0
-    },
-    {
-      "category": "소호",
-      "productKeys": [
-        "무선인터넷",
-        "프리미엄",
-        "인터넷전화"
-      ],
-      "featureRange": null,
-      "displayName": "프리미엄+인터넷전화",
-      "internetDiscount": 10000,
-      "voipDiscount": 0,
-      "installationDiscount": 0
-    },
-    {
-      "category": "소호",
-      "productKeys": [
-        "무선인터넷",
-        "베이직",
-        "AI전화"
-      ],
-      "featureRange": null,
-      "displayName": {
-        "richText": [
-          {
-            "text": "베이직+"
-          },
-          {
-            "font": {
-              "size": 11,
-              "color": {
-                "argb": "FF000000"
-              },
-              "name": "맑은 고딕",
-              "family": 3,
-              "charset": 129
-            },
-            "text": "AI"
-          },
-          {
-            "font": {
-              "size": 11,
-              "color": {
-                "argb": "FF000000"
-              },
-              "name": "맑은 고딕",
-              "family": 3,
-              "charset": 129
-            },
-            "text": "전화"
-          }
-        ]
-      },
-      "internetDiscount": 7500,
-      "voipDiscount": 0,
-      "installationDiscount": 0
-    },
-    {
-      "category": "소호",
-      "productKeys": [
-        "무선인터넷",
-        "프리미엄",
-        "AI전화"
-      ],
-      "featureRange": null,
-      "displayName": {
-        "richText": [
-          {
-            "text": "프리미엄+"
-          },
-          {
-            "font": {
-              "size": 11,
-              "color": {
-                "argb": "FF000000"
-              },
-              "name": "맑은 고딕",
-              "family": 3,
-              "charset": 129
-            },
-            "text": "AI"
-          },
-          {
-            "font": {
-              "size": 11,
-              "color": {
-                "argb": "FF000000"
-              },
-              "name": "맑은 고딕",
-              "family": 3,
-              "charset": 129
-            },
-            "text": "전화"
-          }
-        ]
-      },
-      "internetDiscount": 10000,
-      "voipDiscount": 0,
-      "installationDiscount": 0
     }
   ],
   "deviceStandalonePrices": {
