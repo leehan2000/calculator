@@ -1,6 +1,7 @@
 import React from 'react';
 import CalculatorForm from './components/CalculatorForm';
 import ResultCard from './components/ResultCard';
+import DataManager from './components/DataManager';
 import { useMultiRateCalculator } from './hooks/useRateCalculator';
 
 /**
@@ -9,6 +10,7 @@ import { useMultiRateCalculator } from './hooks/useRateCalculator';
  * 주요 기능:
  * - 복수 상품 동시 선택 및 계산
  * - 계산 결과 표시
+ * - 데이터 관리 (업로드/다운로드)
  * - 에러 처리 및 로딩 상태 관리
  */
 function App() {
@@ -18,8 +20,10 @@ function App() {
     calculationResult,
     isCalculating,
     selectOptions,
+    rateData,
     calculate,
-    resetCalculation
+    resetCalculation,
+    updateRateData
   } = useMultiRateCalculator();
 
   // 로딩 상태
@@ -93,6 +97,12 @@ function App() {
       {/* 메인 컨텐츠 */}
       <main className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
         <div className="px-4 py-6 sm:px-0">
+          
+          {/* 데이터 관리 섹션 */}
+          <DataManager 
+            onDataUpdate={updateRateData || (() => {})}
+            currentData={rateData}
+          />
           
           {/* 계산 결과가 없을 때 - 입력 폼 표시 */}
           {!calculationResult && (

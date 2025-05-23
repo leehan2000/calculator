@@ -139,14 +139,49 @@ export function useMultiRateCalculator() {
     setError(null);
   };
 
+  /**
+   * 요금 데이터 업데이트 함수
+   */
+  const updateRateData = (newData: any): void => {
+    try {
+      console.log('📊 요금 데이터 업데이트:', newData);
+      
+      // 기존 데이터와 새 데이터 병합
+      const updatedRateData: RateData = {
+        ...rateData,
+        priceData: {
+          ...rateData?.priceData,
+          ...newData
+        }
+      } as RateData;
+
+      setRateData(updatedRateData);
+      
+      // 선택 옵션 재생성
+      const options = generateSelectOptions(updatedRateData);
+      setSelectOptions({
+        ...options,
+        options: {}
+      });
+      
+      console.log('📊 요금 데이터 업데이트 완료');
+      
+    } catch (err) {
+      console.error('📊 요금 데이터 업데이트 실패:', err);
+      setError('데이터 업데이트 중 오류가 발생했습니다.');
+    }
+  };
+
   return {
     loading,
     error,
     calculationResult,
     isCalculating,
     selectOptions,
+    rateData,
     calculate,
-    resetCalculation
+    resetCalculation,
+    updateRateData
   };
 }
 
@@ -274,14 +309,49 @@ export function useRateCalculator() {
     setError(null);
   };
 
+  /**
+   * 요금 데이터 업데이트 함수
+   */
+  const updateRateData = (newData: any): void => {
+    try {
+      console.log('📊 요금 데이터 업데이트:', newData);
+      
+      // 기존 데이터와 새 데이터 병합
+      const updatedRateData: RateData = {
+        ...rateData,
+        priceData: {
+          ...rateData?.priceData,
+          ...newData
+        }
+      } as RateData;
+
+      setRateData(updatedRateData);
+      
+      // 선택 옵션 재생성
+      const options = generateSelectOptions(updatedRateData);
+      setSelectOptions({
+        ...options,
+        options: {}
+      });
+      
+      console.log('📊 요금 데이터 업데이트 완료');
+      
+    } catch (err) {
+      console.error('📊 요금 데이터 업데이트 실패:', err);
+      setError('데이터 업데이트 중 오류가 발생했습니다.');
+    }
+  };
+
   return {
     loading,
     error,
     calculationResult,
     isCalculating,
     selectOptions,
+    rateData,
     calculate,
-    resetCalculation
+    resetCalculation,
+    updateRateData
   };
 }
 
