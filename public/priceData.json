@@ -1,0 +1,1389 @@
+{
+  "priceData": {
+    "SME": {
+      "인터넷": {
+        "100M": {
+          "기본료": 28000,
+          "장비임대료": 0,
+          "설치비": 0
+        },
+        "500M": {
+          "기본료": 40000,
+          "장비임대료": 0,
+          "설치비": 0
+        },
+        "1G": {
+          "기본료": 45000,
+          "장비임대료": 0,
+          "설치비": 0
+        }
+      },
+      "인터넷전화": {
+        "DCS": {
+          "종량제": {
+            "기본료": 2000,
+            "장비임대료": 0,
+            "설치비": 0
+          },
+          "정액제": {
+            "기본료": 0,
+            "장비임대료": 0,
+            "설치비": 0
+          }
+        },
+        "고급형DCS": {
+          "종량제": {
+            "기본료": 3000,
+            "장비임대료": 0,
+            "설치비": 0
+          },
+          "정액제": {
+            "기본료": 0,
+            "장비임대료": 0,
+            "설치비": 0
+          }
+        },
+        "고급형센트릭스": {
+          "종량제": {
+            "기본료": 3000,
+            "장비임대료": 0,
+            "설치비": 0
+          },
+          "정액제": {
+            "기본료": 0,
+            "장비임대료": 0,
+            "설치비": 0
+          }
+        },
+        "일반형": {
+          "기본료": 2000,
+          "장비임대료": 0,
+          "설치비": 0
+        }
+      },
+      "IPTV": {
+        "베이직": {
+          "기본료": 11000,
+          "장비임대료": 0,
+          "설치비": 12000
+        },
+        "프리미엄": {
+          "기본료": 15000,
+          "장비임대료": 0,
+          "설치비": 12000
+        },
+        "단체형": {
+          "기본료": 5900,
+          "장비임대료": 0,
+          "설치비": 0
+        }
+      }
+    },
+    "소호": {
+      "인터넷": {
+        "유선인터넷": {
+          "100M": {
+            "기본료": 20000,
+            "장비임대료": 0,
+            "설치비": 33000
+          },
+          "500M": {
+            "기본료": 30000,
+            "장비임대료": 0,
+            "설치비": 33000
+          },
+          "1G": {
+            "기본료": 35000,
+            "장비임대료": 0,
+            "설치비": 33000
+          }
+        },
+        "인터넷_결제안심": {
+          "100M": {
+            "기본료": 23000,
+            "장비임대료": 0,
+            "설치비": 33000
+          },
+          "500M": {
+            "기본료": 33000,
+            "장비임대료": 0,
+            "설치비": 33000
+          },
+          "1G": {
+            "기본료": 38000,
+            "장비임대료": 0,
+            "설치비": 33000
+          }
+        },
+        "무선인터넷": {
+          "베이직": {
+            "기본료": 27500,
+            "장비임대료": 0,
+            "설치비": 33000
+          },
+          "프리미엄": {
+            "기본료": 35000,
+            "장비임대료": 0,
+            "설치비": 33000
+          }
+        }
+      },
+      "인터넷전화": {
+        "일반형": {
+          "기본료": 2000,
+          "장비임대료": 0,
+          "설치비": 0
+        },
+        "고급형센트릭스": {
+          "정액제": {
+            "기본료": 0,
+            "장비임대료": 0,
+            "설치비": 0
+          },
+          "종량제": {
+            "기본료": 3000,
+            "장비임대료": 0,
+            "설치비": 0
+          }
+        }
+      },
+      "IPTV": {
+        "베이직": {
+          "기본료": 11000,
+          "장비임대료": 0,
+          "설치비": 12000
+        },
+        "프리미엄": {
+          "기본료": 15000,
+          "장비임대료": 0,
+          "설치비": 12000
+        }
+      },
+      "AI전화": {
+        "정액제": {
+          "기본료": 7000,
+          "장비임대료": 0,
+          "설치비": 0
+        },
+        "부가": {
+          "기본료": 5000,
+          "장비임대료": 0,
+          "설치비": 0
+        }
+      },
+      "DX솔루션": {
+        "테이블오더": {
+          "후불형": {
+            "기본료": 17000,
+            "장비임대료": 0,
+            "설치비": 0
+          },
+          "선불형": {
+            "기본료": 19000,
+            "장비임대료": 0,
+            "설치비": 0
+          }
+        },
+        "포스": {
+          "듀얼모니터": {
+            "기본료": 44000,
+            "장비임대료": 4000,
+            "설치비": 0
+          },
+          "IC리더기": {
+            "기본료": 44000,
+            "장비임대료": 1500,
+            "설치비": 0
+          },
+          "서명패드": {
+            "기본료": 44000,
+            "장비임대료": 1500,
+            "설치비": 0
+          },
+          "영수증모니터": {
+            "기본료": 44000,
+            "장비임대료": 2000,
+            "설치비": 0
+          },
+          "KDS(주방모니터)": {
+            "기본료": 44000,
+            "장비임대료": 13500,
+            "설치비": 0
+          }
+        }
+      },
+      "지능형CCTV": {
+        "에스원안심": {
+          "기본료": 12000,
+          "장비임대료": 0,
+          "설치비": 13000
+        },
+        "출입관리기": {
+          "기본료": 30000,
+          "장비임대료": 0,
+          "설치비": 250000
+        }
+      }
+    }
+  },
+  "specialFeaturePrices": {
+    "DCS": {
+      "없음": 0,
+      "자유통화3": 3000,
+      "자유통화4": 4000,
+      "자유통화6": 6000,
+      "자유통화8": 8000,
+      "자유통화10": 10000,
+      "자유통화15": 15000,
+      "자유통화20": 20000,
+      "자유통화30": 30000,
+      "자유통화50": 50000
+    },
+    "고급형DCS": {
+      "없음": 0,
+      "자유통화3": 4000,
+      "자유통화4": 5000,
+      "자유통화6": 7000,
+      "자유통화8": 9000,
+      "자유통화10": 11000,
+      "자유통화15": 16000,
+      "자유통화20": 21000,
+      "자유통화30": 31000,
+      "자유통화50": 51000
+    },
+    "고급형센트릭스": {
+      "없음": 0,
+      "자유통화3": 5000,
+      "자유통화4": 6000,
+      "자유통화6": 8000,
+      "자유통화8": 10000,
+      "자유통화10": 12000,
+      "자유통화15": 17000,
+      "자유통화20": 22000,
+      "자유통화30": 32000,
+      "자유통화50": 52000
+    },
+    "일반형": {
+      "없음": 0,
+      "자유통화3": 0,
+      "자유통화4": 0,
+      "자유통화6": 0,
+      "자유통화8": 0,
+      "자유통화10": 0,
+      "자유통화15": 0,
+      "자유통화20": 0,
+      "자유통화30": 0,
+      "자유통화50": 0
+    }
+  },
+  "devicePrices": {
+    "IP-450S": 1389,
+    "IP-450P": 1667,
+    "IP-300S": 1111,
+    "IP-520S": 1945,
+    "IP-520G": 2111,
+    "MWP2500E": 2361,
+    "GAPM-7500E": 1389,
+    "IP-700S(본체) + EK-700S(확장)": 5000,
+    "CPG 1Port": 1000,
+    "UHD": 4000,
+    "가온": 3000,
+    "기가WIFI": 3000,
+    "프리미엄WIFI": 5000
+  },
+  "bundleDiscounts": [
+    {
+      "category": "SME",
+      "productKeys": [
+        "100M",
+        "인터넷전화"
+      ],
+      "featureRange": null,
+      "displayName": "인터넷+인터넷전화",
+      "internetDiscount": 3000,
+      "voipDiscount": 0,
+      "installationDiscount": 0
+    },
+    {
+      "category": "SME",
+      "productKeys": [
+        "100M",
+        "IPTV"
+      ],
+      "featureRange": null,
+      "displayName": "인터넷+IPTV",
+      "internetDiscount": 3000,
+      "voipDiscount": 0,
+      "installationDiscount": 0
+    },
+    {
+      "category": "SME",
+      "productKeys": [
+        "100M",
+        "지능형CCTV"
+      ],
+      "featureRange": null,
+      "displayName": "인터넷+지능형CCTV",
+      "internetDiscount": 3000,
+      "voipDiscount": 0,
+      "installationDiscount": 0
+    },
+    {
+      "category": "SME",
+      "productKeys": [
+        "100M",
+        "인터넷전화",
+        "DCS",
+        "종량제"
+      ],
+      "featureRange": null,
+      "displayName": "인터넷+DCS종량제",
+      "internetDiscount": 0,
+      "voipDiscount": 1000,
+      "installationDiscount": 0
+    },
+    {
+      "category": "SME",
+      "productKeys": [
+        "100M",
+        "인터넷전화",
+        "고급형DCS",
+        "종량제"
+      ],
+      "featureRange": null,
+      "displayName": "인터넷+고급형DCS종량제",
+      "internetDiscount": 0,
+      "voipDiscount": 1000,
+      "installationDiscount": 0
+    },
+    {
+      "category": "SME",
+      "productKeys": [
+        "100M",
+        "인터넷전화",
+        "일반형"
+      ],
+      "featureRange": null,
+      "displayName": "인터넷+일반형",
+      "internetDiscount": 0,
+      "voipDiscount": 1000,
+      "installationDiscount": 0
+    },
+    {
+      "category": "SME",
+      "productKeys": [
+        "500M",
+        "인터넷전화"
+      ],
+      "featureRange": null,
+      "displayName": "인터넷+인터넷전화",
+      "internetDiscount": 5000,
+      "voipDiscount": 0,
+      "installationDiscount": 0
+    },
+    {
+      "category": "SME",
+      "productKeys": [
+        "500M",
+        "IPTV"
+      ],
+      "featureRange": null,
+      "displayName": "인터넷+IPTV",
+      "internetDiscount": 5000,
+      "voipDiscount": 0,
+      "installationDiscount": 0
+    },
+    {
+      "category": "SME",
+      "productKeys": [
+        "500M",
+        "지능형CCTV"
+      ],
+      "featureRange": null,
+      "displayName": "인터넷+지능형CCTV",
+      "internetDiscount": 5000,
+      "voipDiscount": 0,
+      "installationDiscount": 0
+    },
+    {
+      "category": "SME",
+      "productKeys": [
+        "500M",
+        "지능형CCTV",
+        "인터넷전화"
+      ],
+      "featureRange": null,
+      "displayName": "TPS",
+      "internetDiscount": 6000,
+      "voipDiscount": 0,
+      "installationDiscount": 0
+    },
+    {
+      "category": "SME",
+      "productKeys": [
+        "500M",
+        "지능형CCTV",
+        "IPTV"
+      ],
+      "featureRange": null,
+      "displayName": "TPS",
+      "internetDiscount": 6000,
+      "voipDiscount": 0,
+      "installationDiscount": 0
+    },
+    {
+      "category": "SME",
+      "productKeys": [
+        "500M",
+        "인터넷전화",
+        "DCS",
+        "종량제"
+      ],
+      "featureRange": null,
+      "displayName": "인터넷+DCS종량제",
+      "internetDiscount": 0,
+      "voipDiscount": 1000,
+      "installationDiscount": 0
+    },
+    {
+      "category": "SME",
+      "productKeys": [
+        "500M",
+        "인터넷전화",
+        "고급형DCS",
+        "종량제"
+      ],
+      "featureRange": null,
+      "displayName": "인터넷+고급형DCS종량제",
+      "internetDiscount": 0,
+      "voipDiscount": 1000,
+      "installationDiscount": 0
+    },
+    {
+      "category": "SME",
+      "productKeys": [
+        "500M",
+        "인터넷전화",
+        "일반형"
+      ],
+      "featureRange": null,
+      "displayName": "인터넷+일반형",
+      "internetDiscount": 0,
+      "voipDiscount": 1000,
+      "installationDiscount": 0
+    },
+    {
+      "category": "SME",
+      "productKeys": [
+        "1G",
+        "인터넷전화"
+      ],
+      "featureRange": null,
+      "displayName": "인터넷+인터넷전화",
+      "internetDiscount": 5000,
+      "voipDiscount": 0,
+      "installationDiscount": 0
+    },
+    {
+      "category": "SME",
+      "productKeys": [
+        "1G",
+        "IPTV"
+      ],
+      "featureRange": null,
+      "displayName": "인터넷+IPTV",
+      "internetDiscount": 5000,
+      "voipDiscount": 0,
+      "installationDiscount": 0
+    },
+    {
+      "category": "SME",
+      "productKeys": [
+        "1G",
+        "지능형CCTV"
+      ],
+      "featureRange": null,
+      "displayName": "인터넷+지능형CCTV",
+      "internetDiscount": 5000,
+      "voipDiscount": 0,
+      "installationDiscount": 0
+    },
+    {
+      "category": "SME",
+      "productKeys": [
+        "1G",
+        "지능형CCTV",
+        "인터넷전화"
+      ],
+      "featureRange": null,
+      "displayName": "TPS",
+      "internetDiscount": 7000,
+      "voipDiscount": 0,
+      "installationDiscount": 0
+    },
+    {
+      "category": "SME",
+      "productKeys": [
+        "1G",
+        "지능형CCTV",
+        "IPTV"
+      ],
+      "featureRange": null,
+      "displayName": "TPS",
+      "internetDiscount": 7000,
+      "voipDiscount": 0,
+      "installationDiscount": 0
+    },
+    {
+      "category": "SME",
+      "productKeys": [
+        "1G",
+        "인터넷전화",
+        "DCS",
+        "종량제"
+      ],
+      "featureRange": null,
+      "displayName": "인터넷+DCS종량제",
+      "internetDiscount": 0,
+      "voipDiscount": 1000,
+      "installationDiscount": 0
+    },
+    {
+      "category": "SME",
+      "productKeys": [
+        "1G",
+        "인터넷전화",
+        "고급형DCS",
+        "종량제"
+      ],
+      "featureRange": null,
+      "displayName": "인터넷+고급형DCS종량제",
+      "internetDiscount": 0,
+      "voipDiscount": 1000,
+      "installationDiscount": 0
+    },
+    {
+      "category": "SME",
+      "productKeys": [
+        "1G",
+        "인터넷전화",
+        "일반형"
+      ],
+      "featureRange": null,
+      "displayName": "인터넷+일반형",
+      "internetDiscount": 0,
+      "voipDiscount": 1000,
+      "installationDiscount": 0
+    },
+    {
+      "category": "소호",
+      "productKeys": [
+        "100M",
+        "인터넷전화",
+        "일반형"
+      ],
+      "featureRange": null,
+      "displayName": "인터넷+일반형",
+      "internetDiscount": 0,
+      "voipDiscount": 1000,
+      "installationDiscount": 0
+    },
+    {
+      "category": "소호",
+      "productKeys": [
+        "100M",
+        "IPTV"
+      ],
+      "featureRange": null,
+      "displayName": "인터넷+IPTV",
+      "internetDiscount": 0,
+      "voipDiscount": 0,
+      "installationDiscount": 2000
+    },
+    {
+      "category": "소호",
+      "productKeys": [
+        "500M",
+        "IPTV"
+      ],
+      "featureRange": null,
+      "displayName": "인터넷+IPTV",
+      "internetDiscount": 5000,
+      "voipDiscount": 0,
+      "installationDiscount": 2000
+    },
+    {
+      "category": "소호",
+      "productKeys": [
+        "500M",
+        "지능형CCTV"
+      ],
+      "featureRange": null,
+      "displayName": "인터넷+지능형CCTV",
+      "internetDiscount": 5000,
+      "voipDiscount": 0,
+      "installationDiscount": 0
+    },
+    {
+      "category": "소호",
+      "productKeys": [
+        "500M",
+        "지능형CCTV",
+        "인터넷전화"
+      ],
+      "featureRange": null,
+      "displayName": "TPS",
+      "internetDiscount": 6000,
+      "voipDiscount": 0,
+      "installationDiscount": 0
+    },
+    {
+      "category": "소호",
+      "productKeys": [
+        "500M",
+        "지능형CCTV",
+        "IPTV"
+      ],
+      "featureRange": null,
+      "displayName": "TPS",
+      "internetDiscount": 6000,
+      "voipDiscount": 0,
+      "installationDiscount": 2000
+    },
+    {
+      "category": "소호",
+      "productKeys": [
+        "500M",
+        "지능형CCTV",
+        "AI전화"
+      ],
+      "featureRange": null,
+      "displayName": "TPS",
+      "internetDiscount": 6000,
+      "voipDiscount": 0,
+      "installationDiscount": 0
+    },
+    {
+      "category": "소호",
+      "productKeys": [
+        "500M",
+        "IPTV",
+        "AI전화"
+      ],
+      "featureRange": null,
+      "displayName": {
+        "richText": [
+          {
+            "text": "인터넷+"
+          },
+          {
+            "font": {
+              "size": 11,
+              "color": {
+                "argb": "FF000000"
+              },
+              "name": "맑은 고딕",
+              "family": 3,
+              "charset": 129
+            },
+            "text": "IPTV+AI전화"
+          }
+        ]
+      },
+      "internetDiscount": 5000,
+      "voipDiscount": 0,
+      "installationDiscount": 2000
+    },
+    {
+      "category": "소호",
+      "productKeys": [
+        "500M",
+        "IPTV",
+        "인터넷전화"
+      ],
+      "featureRange": null,
+      "displayName": {
+        "richText": [
+          {
+            "text": "인터넷+"
+          },
+          {
+            "font": {
+              "size": 11,
+              "color": {
+                "argb": "FF000000"
+              },
+              "name": "맑은 고딕",
+              "family": 3,
+              "charset": 129
+            },
+            "text": "IPTV+인터넷전화"
+          }
+        ]
+      },
+      "internetDiscount": 5000,
+      "voipDiscount": 0,
+      "installationDiscount": 2000
+    },
+    {
+      "category": "소호",
+      "productKeys": [
+        "500M",
+        "인터넷전화",
+        "일반형"
+      ],
+      "featureRange": null,
+      "displayName": "인터넷+일반형",
+      "internetDiscount": 0,
+      "voipDiscount": 1000,
+      "installationDiscount": 0
+    },
+    {
+      "category": "소호",
+      "productKeys": [
+        "500M",
+        "AI전화"
+      ],
+      "featureRange": null,
+      "displayName": "인터넷+AI전화",
+      "internetDiscount": 3000,
+      "voipDiscount": 0,
+      "installationDiscount": 0
+    },
+    {
+      "category": "소호",
+      "productKeys": [
+        "1G",
+        "IPTV"
+      ],
+      "featureRange": null,
+      "displayName": "인터넷+IPTV",
+      "internetDiscount": 5000,
+      "voipDiscount": 0,
+      "installationDiscount": 2000
+    },
+    {
+      "category": "소호",
+      "productKeys": [
+        "1G",
+        "CCTV"
+      ],
+      "featureRange": null,
+      "displayName": "인터넷+CCTV",
+      "internetDiscount": 5000,
+      "voipDiscount": 0,
+      "installationDiscount": 0
+    },
+    {
+      "category": "소호",
+      "productKeys": [
+        "1G",
+        "지능형CCTV",
+        "인터넷전화"
+      ],
+      "featureRange": null,
+      "displayName": "TPS",
+      "internetDiscount": 8000,
+      "voipDiscount": 0,
+      "installationDiscount": 0
+    },
+    {
+      "category": "소호",
+      "productKeys": [
+        "1G",
+        "지능형CCTV",
+        "IPTV"
+      ],
+      "featureRange": null,
+      "displayName": "TPS",
+      "internetDiscount": 8000,
+      "voipDiscount": 0,
+      "installationDiscount": 2000
+    },
+    {
+      "category": "소호",
+      "productKeys": [
+        "1G",
+        "지능형CCTV",
+        "AI전화"
+      ],
+      "featureRange": null,
+      "displayName": "TPS",
+      "internetDiscount": 8000,
+      "voipDiscount": 0,
+      "installationDiscount": 0
+    },
+    {
+      "category": "소호",
+      "productKeys": [
+        "1G",
+        "IPTV",
+        "AI전화"
+      ],
+      "featureRange": null,
+      "displayName": {
+        "richText": [
+          {
+            "text": "인터넷+"
+          },
+          {
+            "font": {
+              "size": 11,
+              "color": {
+                "argb": "FF000000"
+              },
+              "name": "맑은 고딕",
+              "family": 3,
+              "charset": 129
+            },
+            "text": "IPTV+AI전화"
+          }
+        ]
+      },
+      "internetDiscount": 5000,
+      "voipDiscount": 0,
+      "installationDiscount": 2000
+    },
+    {
+      "category": "소호",
+      "productKeys": [
+        "1G",
+        "IPTV",
+        "인터넷전화"
+      ],
+      "featureRange": null,
+      "displayName": {
+        "richText": [
+          {
+            "text": "인터넷+"
+          },
+          {
+            "font": {
+              "size": 11,
+              "color": {
+                "argb": "FF000000"
+              },
+              "name": "맑은 고딕",
+              "family": 3,
+              "charset": 129
+            },
+            "text": "IPTV+인터넷전화"
+          }
+        ]
+      },
+      "internetDiscount": 5000,
+      "voipDiscount": 0,
+      "installationDiscount": 2000
+    },
+    {
+      "category": "소호",
+      "productKeys": [
+        "1G",
+        "인터넷전화",
+        "일반형"
+      ],
+      "featureRange": null,
+      "displayName": "인터넷+일반형",
+      "internetDiscount": 0,
+      "voipDiscount": 1000,
+      "installationDiscount": 0
+    },
+    {
+      "category": "소호",
+      "productKeys": [
+        "1G",
+        "AI전화"
+      ],
+      "featureRange": null,
+      "displayName": "인터넷+AI전화",
+      "internetDiscount": 3000,
+      "voipDiscount": 0,
+      "installationDiscount": 0
+    },
+    {
+      "category": "소호",
+      "productKeys": [
+        "무선인터넷",
+        "베이직",
+        "인터넷전화"
+      ],
+      "featureRange": null,
+      "displayName": "베이직+인터넷전화",
+      "internetDiscount": 7500,
+      "voipDiscount": 0,
+      "installationDiscount": 0
+    },
+    {
+      "category": "소호",
+      "productKeys": [
+        "무선인터넷",
+        "프리미엄",
+        "인터넷전화"
+      ],
+      "featureRange": null,
+      "displayName": "프리미엄+인터넷전화",
+      "internetDiscount": 10000,
+      "voipDiscount": 0,
+      "installationDiscount": 0
+    },
+    {
+      "category": "소호",
+      "productKeys": [
+        "무선인터넷",
+        "베이직",
+        "AI전화"
+      ],
+      "featureRange": null,
+      "displayName": {
+        "richText": [
+          {
+            "text": "베이직+"
+          },
+          {
+            "font": {
+              "size": 11,
+              "color": {
+                "argb": "FF000000"
+              },
+              "name": "맑은 고딕",
+              "family": 3,
+              "charset": 129
+            },
+            "text": "AI"
+          },
+          {
+            "font": {
+              "size": 11,
+              "color": {
+                "argb": "FF000000"
+              },
+              "name": "맑은 고딕",
+              "family": 3,
+              "charset": 129
+            },
+            "text": "전화"
+          }
+        ]
+      },
+      "internetDiscount": 7500,
+      "voipDiscount": 0,
+      "installationDiscount": 0
+    },
+    {
+      "category": "소호",
+      "productKeys": [
+        "무선인터넷",
+        "프리미엄",
+        "AI전화"
+      ],
+      "featureRange": null,
+      "displayName": {
+        "richText": [
+          {
+            "text": "프리미엄+"
+          },
+          {
+            "font": {
+              "size": 11,
+              "color": {
+                "argb": "FF000000"
+              },
+              "name": "맑은 고딕",
+              "family": 3,
+              "charset": 129
+            },
+            "text": "AI"
+          },
+          {
+            "font": {
+              "size": 11,
+              "color": {
+                "argb": "FF000000"
+              },
+              "name": "맑은 고딕",
+              "family": 3,
+              "charset": 129
+            },
+            "text": "전화"
+          }
+        ]
+      },
+      "internetDiscount": 10000,
+      "voipDiscount": 0,
+      "installationDiscount": 0
+    }
+  ],
+  "deviceStandalonePrices": {
+    "IP-450S": 1389,
+    "IP-450P": 1667,
+    "IP-300S": 1111,
+    "IP-520S": 1945,
+    "IP-520G": 2111,
+    "MWP2500E": 2361,
+    "GAPM-7500E": 1389,
+    "IP-700S(본체) + EK-700S(확장)": 5000,
+    "CPG 1Port": 1000,
+    "UHD": 4000,
+    "가온": 3000,
+    "기가WIFI": 3000,
+    "프리미엄WIFI": 5000
+  },
+  "deviceBundledPrices": {
+    "IP-450S": 556,
+    "IP-450P": 1389,
+    "IP-300S": 0,
+    "IP-520S": 1111,
+    "IP-520G": 1278,
+    "MWP2500E": 1667,
+    "GAPM-7500E": 1389,
+    "IP-700S(본체) + EK-700S(확장)": 4444,
+    "CPG 1Port": 1000,
+    "UHD": 4000,
+    "가온": 3000,
+    "기가WIFI": 3000,
+    "프리미엄WIFI": 5000
+  },
+  "deviceFeatureDiscounts": {
+    "IP-450S": {
+      "자유통화3": {
+        "type": "percent",
+        "value": 100
+      },
+      "자유통화4": {
+        "type": "percent",
+        "value": 100
+      },
+      "자유통화6": {
+        "type": "percent",
+        "value": 100
+      },
+      "자유통화8": {
+        "type": "percent",
+        "value": 100
+      },
+      "자유통화10": {
+        "type": "percent",
+        "value": 100
+      },
+      "자유통화15": {
+        "type": "percent",
+        "value": 100
+      },
+      "자유통화20": {
+        "type": "percent",
+        "value": 100
+      },
+      "자유통화30": {
+        "type": "percent",
+        "value": 100
+      },
+      "자유통화50": {
+        "type": "percent",
+        "value": 100
+      },
+      "AI전화": {
+        "type": "percent",
+        "value": 100
+      }
+    },
+    "IP-450P": {
+      "자유통화3": {
+        "type": "percent",
+        "value": 100
+      },
+      "자유통화4": {
+        "type": "percent",
+        "value": 100
+      },
+      "자유통화6": {
+        "type": "percent",
+        "value": 100
+      },
+      "자유통화8": {
+        "type": "percent",
+        "value": 100
+      },
+      "자유통화10": {
+        "type": "percent",
+        "value": 100
+      },
+      "자유통화15": {
+        "type": "percent",
+        "value": 100
+      },
+      "자유통화20": {
+        "type": "percent",
+        "value": 100
+      },
+      "자유통화30": {
+        "type": "percent",
+        "value": 100
+      },
+      "자유통화50": {
+        "type": "percent",
+        "value": 100
+      },
+      "AI전화": {
+        "type": "percent",
+        "value": 100
+      }
+    },
+    "IP-300S": {
+      "자유통화3": {
+        "type": "percent",
+        "value": 100
+      },
+      "자유통화4": {
+        "type": "percent",
+        "value": 100
+      },
+      "자유통화6": {
+        "type": "percent",
+        "value": 100
+      },
+      "자유통화8": {
+        "type": "percent",
+        "value": 100
+      },
+      "자유통화10": {
+        "type": "percent",
+        "value": 100
+      },
+      "자유통화15": {
+        "type": "percent",
+        "value": 100
+      },
+      "자유통화20": {
+        "type": "percent",
+        "value": 100
+      },
+      "자유통화30": {
+        "type": "percent",
+        "value": 100
+      },
+      "자유통화50": {
+        "type": "percent",
+        "value": 100
+      },
+      "AI전화": {
+        "type": "percent",
+        "value": 100
+      }
+    },
+    "IP-520S": {
+      "자유통화3": {
+        "type": "percent",
+        "value": 100
+      },
+      "자유통화4": {
+        "type": "percent",
+        "value": 100
+      },
+      "자유통화6": {
+        "type": "percent",
+        "value": 100
+      },
+      "자유통화8": {
+        "type": "percent",
+        "value": 100
+      },
+      "자유통화10": {
+        "type": "percent",
+        "value": 100
+      },
+      "자유통화15": {
+        "type": "percent",
+        "value": 100
+      },
+      "자유통화20": {
+        "type": "percent",
+        "value": 100
+      },
+      "자유통화30": {
+        "type": "percent",
+        "value": 100
+      },
+      "자유통화50": {
+        "type": "percent",
+        "value": 100
+      },
+      "AI전화": {
+        "type": "percent",
+        "value": 100
+      }
+    },
+    "IP-520G": {
+      "자유통화3": {
+        "type": "percent",
+        "value": 50
+      },
+      "자유통화4": {
+        "type": "percent",
+        "value": 50
+      },
+      "자유통화6": {
+        "type": "percent",
+        "value": 100
+      },
+      "자유통화8": {
+        "type": "percent",
+        "value": 100
+      },
+      "자유통화10": {
+        "type": "percent",
+        "value": 100
+      },
+      "자유통화15": {
+        "type": "percent",
+        "value": 100
+      },
+      "자유통화20": {
+        "type": "percent",
+        "value": 100
+      },
+      "자유통화30": {
+        "type": "percent",
+        "value": 100
+      },
+      "자유통화50": {
+        "type": "percent",
+        "value": 100
+      },
+      "AI전화": {
+        "type": "percent",
+        "value": 50
+      }
+    },
+    "MWP2500E": {
+      "자유통화3": {
+        "type": "percent",
+        "value": 50
+      },
+      "자유통화4": {
+        "type": "percent",
+        "value": 50
+      },
+      "자유통화6": {
+        "type": "percent",
+        "value": 50
+      },
+      "자유통화8": {
+        "type": "percent",
+        "value": 50
+      },
+      "자유통화10": {
+        "type": "percent",
+        "value": 50
+      },
+      "자유통화15": {
+        "type": "percent",
+        "value": 50
+      },
+      "자유통화20": {
+        "type": "percent",
+        "value": 50
+      },
+      "자유통화30": {
+        "type": "percent",
+        "value": 50
+      },
+      "자유통화50": {
+        "type": "percent",
+        "value": 50
+      },
+      "AI전화": {
+        "type": "percent",
+        "value": 50
+      }
+    },
+    "GAPM-7500E": {
+      "자유통화3": {
+        "type": "percent",
+        "value": 100
+      },
+      "자유통화4": {
+        "type": "percent",
+        "value": 100
+      },
+      "자유통화6": {
+        "type": "percent",
+        "value": 100
+      },
+      "자유통화8": {
+        "type": "percent",
+        "value": 100
+      },
+      "자유통화10": {
+        "type": "percent",
+        "value": 100
+      },
+      "자유통화15": {
+        "type": "percent",
+        "value": 100
+      },
+      "자유통화20": {
+        "type": "percent",
+        "value": 100
+      },
+      "자유통화30": {
+        "type": "percent",
+        "value": 100
+      },
+      "자유통화50": {
+        "type": "percent",
+        "value": 100
+      },
+      "AI전화": {
+        "type": "percent",
+        "value": 100
+      }
+    },
+    "IP-700S(본체) + EK-700S(확장)": {
+      "자유통화3": {
+        "type": "percent",
+        "value": 50
+      },
+      "자유통화4": {
+        "type": "percent",
+        "value": 50
+      },
+      "자유통화6": {
+        "type": "percent",
+        "value": 50
+      },
+      "자유통화8": {
+        "type": "percent",
+        "value": 50
+      },
+      "자유통화10": {
+        "type": "percent",
+        "value": 50
+      },
+      "자유통화15": {
+        "type": "percent",
+        "value": 50
+      },
+      "자유통화20": {
+        "type": "percent",
+        "value": 50
+      },
+      "자유통화30": {
+        "type": "percent",
+        "value": 50
+      },
+      "자유통화50": {
+        "type": "percent",
+        "value": 50
+      },
+      "AI전화": {
+        "type": "percent",
+        "value": 50
+      }
+    },
+    "CPG 1Port": {},
+    "UHD": {},
+    "가온": {},
+    "기가WIFI": {},
+    "프리미엄WIFI": {}
+  }
+}
